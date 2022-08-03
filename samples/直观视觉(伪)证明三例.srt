@@ -1,0 +1,260 @@
+1
+00:00:00,000 --> 00:00:07,440
+today i'd like to share with you three fake proofs in increasing order of subtlety and then discuss what each one of them has to tell us about math. 
+
+2
+00:00:11,429 --> 00:00:45,689
+the first proof is for a formula for the surface area of a sphere and the way that it starts is to subdivide that sphere into vertical slices the way you might chop up an orange or paint a beech ball within unravel all of those wedge slices from the northern hemisphere so that they poke up like this and then symmetrically unravel all of those from the southern hemisphere below and now interlease those. pieces to get a shape whose area we want to figure out the base of this shape came from the circumference of the sphere. it's an unraveled equator, though its length is two pi times the radius of the sphere. 
+
+3
+00:00:45,869 --> 00:01:14,370
+and then the other side of this shape came from the height of one of these wedges, which is a quarter of a walk around the sphere. and so it has a length of pi halves times r. the idea is that this is only an approximation the edges might not be perfectly straight, but if we think of the limit as we do finer and finer slices of the sphere, this shape whose area we want to know it's closer to being a perfect rectangle one whose area will be pi times r times pi r or in other words. pi squared times r squared. 
+
+4
+00:01:14,900 --> 00:01:29,780
+the proof is elegant. it translates a hard problem into a situation that's easier to understand. it has that element of surprise while still being intuitive, it's only fault really is that it's completely wrong. the true surface area of a sphere is four pi r squared. 
+
+5
+00:01:29,959 --> 00:01:39,859
+i originally saw this example thanks to henry rich and to be fair, it's not necessarily inconsistent with the four pi r squared formula just so long as pi is equal to. 
+
+6
+00:01:40,040 --> 00:01:44,950
+for the next proof, i'd like to show you a simple argument for the fact that pi is equal to. 
+
+7
+00:01:45,670 --> 00:02:03,670
+we start off with a circle, say with radius one and we ask, how can we figure out its circumference after all pie is by definition the ratio of the circumference to the diameter of the circle, we start off by drawing the square whose siblings are all tangent to that circle. it's not too hard to see that the perimeter of the square is eight. 
+
+8
+00:02:03,849 --> 00:02:51,110
+then and some of you may have seen this before. it's a kind of classic argument. the argument proceeds by producing a sequence of curves, all of whom also have this perimeter of eight, but which more and more closely approximate the circle, but the full nuance of this example is not always emphasized. first of all. just to make things crystal clear the way each of these iterations works is to fold in each of the corners of the previous shape so that they just barely kiss the circle and you can take a moment to convince yourself that in each region wherefore it happened. the perimeter doesn't change, for example, in the upper right here instead of walking up and then left, the new curve goes left and then up and something similar is true at all of the folds of all of the different iterations wherever the previous iteration went direction a than direction b the new iteration goes direction b than direction a. but no length is lost or gained. 
+
+9
+00:02:51,289 --> 00:03:26,430
+some of you might say, well, obviously this isn't gonna give the true perimeter of the circle because no matter how many iterations you do when you zoom in it remains jacket. it's not a smooth curve. you're taking these very inefficient steps along the circle while that is true. and ultimately the reason things are wrong if you want to appreciate the lesson, this example is teaching us the claim of the example is not that any one of these approximations equals the curve. it's that the limit of all of the approximations equals our circle and to appreciate the lesson that this example teaches us it's worth taking a moment to be a little more mathematically precise about what i mean by the limit of a sequence of. 
+
+10
+00:03:27,020 --> 00:03:55,639
+let's say we described the very first shape. this square is a parametric function, something that has an input t and it outputs a point in d space so that as t ranges from zero to one, it traces that square. i'll call that function c zero and likewise we can parameterize the next iteration with a function i'll call c as the parameter t ranges from zero up to one the output of this function traces along that curve. this is just so that we can think of these shapes as instead being functions. 
+
+11
+00:03:55,879 --> 00:04:14,479
+now i want you to consider a particular value of t maybe zero point two and then consider the sequence of points that you get by evaluating the sequence of functions we have at this particular point. now i want you to consider the limit as n approaches infinity of c sub n of zero point two. 
+
+12
+00:04:14,750 --> 00:04:34,850
+this limit is a well defined point in d space. in fact, that point sits on the circle and there's nothing specific about zero point two we could do this limiting process for any input t and so i can define a new function that i'll call c infinity. which by definition at any input t is whatever this limiting value for all the curves it is. 
+
+13
+00:04:35,029 --> 00:04:49,120
+so here's the point that limiting function c infinity is the circle. it's not an approximation of the circle. it's not some jagged version of the circle. it is the genuine smooth circular curve whose perimeter we want to know. 
+
+14
+00:04:49,360 --> 00:04:59,029
+and what's also true is that the limit of the lengths of all of our curves really is eight because each individual curve really does have a perimeter of eight. 
+
+15
+00:04:59,209 --> 00:05:14,610
+and there are all sorts of examples throughout calculus when we talk about approximating one thing we want to know as a limit of a bunch of other things that are easier to understand. so the question at the heart here is why exactly is it not okay to do that in this example, so. 
+
+16
+00:05:16,720 --> 00:05:56,759
+and maybe at this point, you step back and say, you know it's just not enough for things to look the same. this is why we need rigor. it's why we need proofs. it's why since the days of euclid mathematicians have followed in his footsteps and deduced truths step by step from axioms forward. but for this last example, i would like to do something that doesn't lean as hard on visual intuition and instead give a euclid style proof for the claim that all triangles are isosceles the way this will work is will take any particular triangle and make no assumptions about it. i'll label its vertices a, b and c and what i would like to prove for you is that the side length ab is necessarily equal to the side length. 
+
+17
+00:05:57,050 --> 00:06:14,600
+now, to be clear, the result is obviously false in the diagram i've drawn, you can visually see that these lengths are not equal to each other. but i challenge you to see if you can identify what's wrong about the proof. i'm about to show you honestly, it's very subtle and three gold stars for anyone who can identify it. 
+
+18
+00:06:14,870 --> 00:06:24,970
+the first thing i'll do is draw the perpendicular bisector of the line b c. so that means this angle here is ninety degrees and this length is by definition the same as this link. 
+
+19
+00:06:25,310 --> 00:06:27,899
+and we'll label that intersection. 
+
+20
+00:06:28,300 --> 00:06:48,399
+and then next i will draw the angle bisector at a. which means by definition, this little angle here is the same as this little angle here. i'll label both of them alpha and we'll say that the point where these two intersect is p and now like a lot of euclid style proofs were just going to draw some new lines, figure out what things must be equal and get some conclusion. 
+
+21
+00:06:48,579 --> 00:06:56,600
+for instance, let's draw the line from p, which is perpendicular to the side length a c and we'll label that intersection point. 
+
+22
+00:06:57,069 --> 00:07:53,230
+and likewise, we all draw the line from p down to the other side length a c again, it's perpendicular and will label that intersection point f my first claim is that this triangle here, which is a f p is the same or at least congruent to this triangle over here a.e.p. essentially. this follows from symmetry across that angle bicycle more specifically, we can say they share a side length and then they both have an angle alpha and both have an angle ninety degrees. so it follows by the side angle angle concurrence relation. maybe my drawing is a little bit sloppy, but the logic helps us see that they do have to be the same next eldra aligned from p down to b and then from p down to c and i claim that this triangle here is congruent to its reflection across that perpendicular bisector again. the symmetry maybe helps make this clear. but more rigorously they both have the same base. they both have a ninety degree. 
+
+23
+00:07:53,230 --> 00:08:04,470
+and they both have the same height. though it follows by the side angle side relation. so based on that first pair of triangles, i'm gonna mark this side length here is being the same as this side length here. marking them with double tick marks. 
+
+24
+00:08:04,779 --> 00:08:27,980
+and based on the second triangle relation. i'll mark this side length here is the same as this line over here, marking them with triple thick marks. and so from that, we have two more triangles that need to be the same. namely this one over here and the one with corresponding to side length over here and the reasoning here is they both have that triple ticked side. a double tipped side and they're both ninety degree triangles. 
+
+25
+00:08:28,180 --> 00:08:31,649
+but this follows by the side side angle congruence relation. 
+
+26
+00:08:31,850 --> 00:08:41,879
+and all of those are valid congruence relations. i'm not pulling the wool over your eyes with one of those and all of this will basically be enough to show us why a b has to be the same as b.c.. 
+
+27
+00:08:42,129 --> 00:08:50,960
+the first pair of triangles implies that the length af is the same as the length ae was a corresponding sides to each other. i'll just follow them in, read here. 
+
+28
+00:08:51,139 --> 00:08:58,899
+and then that last triangle relation guarantees for us that the side fb is gonna be the same as the side e. 
+
+29
+00:08:59,460 --> 00:09:11,600
+and of color. both of those in blue and finally the result we want basically comes from adding up these two equations. the length a f plus f b is clearly the same as the total length a b. 
+
+30
+00:09:11,779 --> 00:09:27,210
+and likewise, the length a e plus e c is the same as the total length a c, though all in all the side length a b has to be the same as the side length a c and because we made no assumptions about the triangle, this implies that any triangle is i saw a. 
+
+31
+00:09:27,399 --> 00:09:34,330
+actually, for that matter, since we made no assumptions about the specific two sides we chose, it implies that any triangle is equilateral. 
+
+32
+00:09:35,309 --> 00:09:49,250
+so this leaves us somewhat disturbingly with three different possibilities. all triangles really are equilateral. that's just the truth of the universe or you can use youtube style reasoning to derive false results or there's something wrong in the proof. 
+
+33
+00:09:49,429 --> 00:09:51,909
+but if there is where exactly is it. 
+
+34
+00:09:54,659 --> 00:09:57,960
+so what exactly is going on with these three examples. 
+
+35
+00:09:58,259 --> 00:10:08,220
+now the thing that's a little bit troubling about that first example with the sphere is that it is very similar in spirit to a lot of other famous and supposedly true visual proofs from geometry. 
+
+36
+00:10:08,450 --> 00:10:20,409
+for example, there's a very famous proof about the area of a circle that starts off by dividing it into a bunch of little pizza wedges and you take all those wedges and you straighten them out, essentially lining up the crust of that pizza. 
+
+37
+00:10:20,590 --> 00:10:45,139
+and then we take half of the wedges and interslice them with the other half. and the idea is that this might not be a perfect rectangle. it's got some bumps and curves, but as you take thinner and thinner slices, you get something that's closer and closer to a true rectangle and the width of that rectangle comes from half the circumference of the circle. which is by definition pi times r and then the height of that rectangle comes from the radius of the are. 
+
+38
+00:10:45,480 --> 00:10:48,250
+meaning that the whole area is pi r squared. 
+
+39
+00:10:48,610 --> 00:10:56,960
+this time the result is valid, but why is it not ok to do what we did with the spheres, but somehow it is ok to do this with the pizza slices. 
+
+40
+00:10:57,460 --> 00:11:54,350
+the main problem with the sphere argument is that when we flatten out all of those orange wedges, if we were to do it accurately in a way that preserves their area, they don't look like triangles, they should bulge outward and if you want to see this. let's think really critically about just one particular one of those wedges on the sphere and ask yourself how does the width across that wedge this little portion of a line of latitude vary as you go up and down the wedge in particular, if you consider the angle thee from the z axis down to a point on this wedge as we walk down it what's the length of that width as a function of fee. for those of you curious about the details of these sorts of things, you'd start off by drawing this line up here from the z axis to a point on the wedge, its length will be the radius of the sphere r times. the sign of this angle that lets us deduce how long the total line of latitude is where we're sitting. uh, it'll basically be two pi times that radio line two pi r sign of the. 
+
+41
+00:11:54,350 --> 00:12:17,669
+and then the width of the wedge that we care about is just some constant proportion of that full line of latitude. now the details don't matter too much. the one thing i want you to notice is that this is not a linear relationship as you walk from the top of that wedge down to the bottom letting fee range from zero up to pi halves the width of the wedge doesn't grow linearly. instead, it grows according to a sine curve. 
+
+42
+00:12:18,139 --> 00:12:27,570
+and so when we're unwrapping all of these wedges, if we want those wits to be preserved, they should end up a little bit chubbier around the base. their side lengths are not linear. 
+
+43
+00:12:27,779 --> 00:12:43,360
+what this means is when we tried to interlace all of the wedges from the northern hemisphere with those from the southern, there is a meaningful amount of overlap between those non-linear edges and we can't waive our hands about a limiting argument. this is an overlap that persists as you take finer and finer subdivision. 
+
+44
+00:12:43,539 --> 00:12:51,419
+and ultimately, it's that overlap that accounts for the difference between our false answer with a pi squared from the true answer that has four pi. 
+
+45
+00:12:51,600 --> 00:13:26,659
+it reminds me of one of those rearrangement puzzles where you have a number of pieces and just by moving them around, you can seemingly create area out of nowhere. for example, right now i have arranged all these pieces to form a triangle except it's missing two units of area in the middle and i want you to focus on the vertices of that triangle, these white dots. those don't move. i'm not pulling any trickery with that. but i can rearrange all of the pieces back to how they originally were that those two units of area in the middle seemed to disappear. all the constituent parts remain the same. the triangle that they form remains the same and yet two units of area seem to appear out of nowhere. 
+
+46
+00:13:27,009 --> 00:13:33,230
+if you've never seen this one before. by the way, i highly encourage you to pause and try to think it through. it's a very fun little puzzle. 
+
+47
+00:13:33,610 --> 00:13:45,980
+the answer starts to reveal itself if we carefully draw the edges of this triangle and zoom in close enough to see that our pieces don't actually fit inside the triangle they bulge out ever so slightly. 
+
+48
+00:13:46,159 --> 00:14:23,080
+or at least arranged like this, they bulge out ever so slightly when we rearrange them and we zoom back in, we can see that they dent inward ever so slightly and that very subtle difference between the bulge out and the dead inward accounts for all of the difference in area. the slope of the edge of this blue triangle works out to be five divided by two where's the slope of the edge of this red triangle works out to be seven divided by three. those numbers are close enough to look similar as slope, but they allow for this denting inward and the bulging outward. you have to be wary of lines that are made to look straight when you haven't had explicit confirmation that they actually are straight up. 
+
+49
+00:14:24,240 --> 00:14:40,809
+one quick added comment on the sphere. the fundamental issue here is that the geometry of a curved surface is fundamentally different from the geometry of flat space. the relevant search term here would be gaussian curvature. you can't flatten things out from a sphere without losing geometric information. 
+
+50
+00:14:40,990 --> 00:14:48,289
+now, when you do see limiting arguments that relate to little pieces on a sphere that somehow get flattened out and are reasoned through. 
+
+51
+00:14:48,470 --> 00:14:58,679
+those only can work if the limiting pieces that you're talking about get smaller in both directions. it's only when you zoom in close to a curved surface that it appears locally flat. 
+
+52
+00:14:58,860 --> 00:15:09,090
+the issue with our orange wedge argument is that our pieces never got exposed to that local flatness because they only got thin in one direction. they maintain the curvature in that other direction. 
+
+53
+00:15:09,269 --> 00:15:24,509
+now on the topic of the subtlety of limiting arguments, let's turn back to our limit of jagged curves that approaches the smooth circular curve. as i said. the limiting curve really is a circle and the limiting value for the length of your approximations really is eight. 
+
+54
+00:15:25,309 --> 00:15:37,600
+here the basic issue is that there is no reason to expect that the limit of the length of the curves is the same as the length of the limits of the curves. and in fact. this is a nice counter example to show why that's not the case. 
+
+55
+00:15:38,139 --> 00:15:50,309
+the real point of this example is not the fear that anyone is ever going to believe that it shows that pi is equal to four. instead, it shows why care is required in other cases where people apply limiting arguments. 
+
+56
+00:15:50,490 --> 00:15:57,960
+for example, this happens all throughout calculus. it is the heart of calculus where say you want to know the area under a given curve. 
+
+57
+00:15:58,139 --> 00:16:20,470
+the way we typically think about it is to approximate that with a set of rectangles because those are the things we know how to compute the areas of you just take the base times height in each case. now this is a very jagged approximation. but the thought or against the hope is that as you take a finer and finer subdivision into thinner and thinner rectangles, the sums of those areas approaches, the thing we actually care about. 
+
+58
+00:16:20,820 --> 00:16:29,200
+if you want to make it rigorous. you have to be explicit about the error between these approximations and the true thing we care about the area under this curve. 
+
+59
+00:16:29,450 --> 00:16:51,149
+for example, you might start your argument by saying that that error has to be strictly less than the area of these red rectangles. essentially the deviation between the curve and are approximating rectangles sits strictly inside that red region and then what you would want to argue is that in this limiting process, the cumulative area of all of those red rectangles has to approach zero. 
+
+60
+00:16:57,320 --> 00:17:28,339
+now, as to the final example, our proof that all triangles are isosceles. let me show you what it looks like if i'm a little bit more careful about actually constructing the angle bisector rather than just eyeballing it when i do that, the relevant intersection point actually sits outside of the triangle and then from there, if i go through everything that we did in the original argument, drawing the relevant perpendicular lines. all of that. every triangle that i claimed was congruent really is congruent. all of those were genuinely true and the corresponding length of those triangles that i claimed were the same really. 
+
+61
+00:17:28,519 --> 00:17:37,630
+the one place where the proof breaks down is at the very end when i said that the full side length a c was equal to a e plus e c. 
+
+62
+00:17:37,809 --> 00:17:49,750
+that was only true under the hidden assumption that that point e sat in between them, but in reality. for many triangles that point would sit outside of those two. it's pretty subtle, isn't it. 
+
+63
+00:17:51,529 --> 00:18:01,000
+the point in all of this is that while visual intuition is great and visual proofs often give you a nice way of elucidating what's going on with otherwise opaque riger. 
+
+64
+00:18:01,200 --> 00:18:11,180
+visual arguments and snazzy diagrams will never obviate the need for critical thinking in math. you cannot escape the need to look out for hidden assumptions and edge cases. 
+
+65
+00:18:33,130 --> 00:18:33,809
+mm. 
+
