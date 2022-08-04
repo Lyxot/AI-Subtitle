@@ -11,9 +11,9 @@ from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
-import uuid
 import requests
 import hashlib
+import random
 
 # Log
 import logging
@@ -149,12 +149,13 @@ def json2srt(json):
             end_time = str(int(end_time) // 3600).zfill(2) + ":" + str(int(end_time) // 60).zfill(2) + ":" + str(int(end_time) % 60).zfill(2) + "," + str(int((end_time - int(end_time))*1000)).zfill(3)
             # 翻译
             translate_result = translate(text)
-            if translate_result["errorCode"] != "0":
+            if str(translate_result["errorCode"]) != "0":
                 translate_result = translate(text)
             translation = ""
-            if translate_result["errorCode"] == "0":
-                for i in translate_result["translation"]:
-                    translation = translation + i
+            if str(translate_result["errorCode"]) == "0":
+                for i in translate_result["translateResult"]:
+                    for j in i:
+                        translation = translation + j["tgt"]
             # 转换为srt格式
             logging.debug(str(t))
             tmp_result = str(t) + "\n"
@@ -174,64 +175,48 @@ def json2srt(json):
         logging.info("已转为srt格式")
         return result
 
-def translate(text):
-    YOUDAO_URL = 'https://openapi.youdao.com/api'
-    
+def translate(i):
     # 时间戳
-    curtime = str(int(time.time()))
+    lts = str(int(time.time()*1000))
     # 盐值
-    salt = str(uuid.uuid1())
-    
-    # 签名input
-    size = len(text)
-    if size <= 20:
-        truncate = text
-    else:
-        truncate = text[0:10] + str(size) + text[size - 10:size]
+    salt = lts + str(random.randint(0,9))
     # 签名
-    # 计算方法:  sha256(应用ID+input+salt+curtime+应用密钥)
-    signStr = configs.YOUDAO_APP_KEY + truncate + salt + curtime + configs.YOUDAO_APP_SECRET
-    hash_algorithm = hashlib.sha256()
-    hash_algorithm.update(signStr.encode('utf-8'))
-    sign = hash_algorithm.hexdigest()
-    
-    # post
-    data = {}
-    # 时间戳
-    data['curtime'] = curtime
-    # 源语言
-    data['from'] = 'en'
-    # 目标语言
-    data['to'] = 'zh-CHS'
-    # 签名类型
-    data['signType'] = 'v3'
-    # appKey
-    data['appKey'] = configs.YOUDAO_APP_KEY
-    # 待翻译文本
-    data['q'] = text
-    # 盐值
-    data['salt'] = salt
-    # 签名
-    data['sign'] = sign
-    # 严格模式
-    data['strict'] = "true"
-    # 用户上传的词典
-    # data['vocabId'] = "您的用户词表ID"
-
-    logging.debug(str(data))
-
+    sign_str = 'fanyideskweb' + i + salt + 'Ygy_4c=r#e#4EX^NUGUc5'
+    m = hashlib.md5()
+    m.update(sign_str.encode())
+    sign = m.hexdigest()
     # requests
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    response = requests.post(YOUDAO_URL, data=data, headers=headers)
-    response = json.loads(response.content.decode('UTF-8'))
-    if response["errorCode"] == "0":
-        logging.info("翻译成功: " + text)
+    url = 'https://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
+    headers = {
+        'Cookie': 'OUTFOX_SEARCH_USER_ID=-1927650476@223.97.13.65;',
+        'Host': 'fanyi.youdao.com',
+        'Origin': 'http://fanyi.youdao.com',
+        'Referer': 'http://fanyi.youdao.com/',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36 Edg/103.0.1264.77'
+    }
+    data = {
+        "i": i,
+        "from": "en",
+        "to": "zh-CHS",
+        "smartresult": "dict",
+        "client": "fanyideskweb",
+        "salt": salt,
+        "sign": sign,
+        "lts": lts,
+        "doctype": "json",
+        "version": "2.1",
+        "keyfrom": "fanyi.web",
+        "action": "FY_BY_REALTlME",
+    }
+    res = requests.post(url,headers=headers,data=data)
+    response = json.loads(res.text)
+    if str(response["errorCode"]) == 0:
+        logging.info("翻译成功: " + i)
         logging.debug(str(response))
-        return response
     else:
-        logging.error("翻译失败: " + text)
+        logging.error("翻译失败: " + i)
         logging.debug(str(response))
-        return response
+    return response
 
 def test():
     # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
