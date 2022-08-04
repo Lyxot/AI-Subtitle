@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
+from os import truncate
 import configs
 
 import sys
@@ -10,6 +11,9 @@ from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
+import uuid
+import requests
+import hashlib
 
 # Log
 import logging
@@ -143,28 +147,98 @@ def json2srt(json):
             # 处理时间
             begin_time = str(int(begin_time) // 3600).zfill(2) + ":" + str(int(begin_time) // 60).zfill(2) + ":" + str(int(begin_time) % 60).zfill(2) + "," + str(int((begin_time - int(begin_time))*1000)).zfill(3)
             end_time = str(int(end_time) // 3600).zfill(2) + ":" + str(int(end_time) // 60).zfill(2) + ":" + str(int(end_time) % 60).zfill(2) + "," + str(int((end_time - int(end_time))*1000)).zfill(3)
+            # 翻译
+            translate_result = translate(text)
+            if translate_result["errorCode"] != "0":
+                translate_result = translate(text)
+            translation = ""
+            if translate_result["errorCode"] == "0":
+                for i in translate_result["translation"]:
+                    translation = translation + i
             # 转换为srt格式
+            logging.debug(str(t))
             tmp_result = str(t) + "\n"
+            logging.debug(begin_time + " --> " + end_time)
             tmp_result = tmp_result + begin_time + " --> " + end_time + "\n"
+            if translation != "":
+                logging.debug(translation)
+                tmp_result = tmp_result + translation + "\n"
+            logging.debug(text)
             tmp_result = tmp_result + text + "\n"
             tmp_result = tmp_result + "\n"
-            logging.debug(str(t))
-            logging.debug(begin_time + " --> " + end_time)
-            logging.debug(text)
-
+            
+            logging.info("成功转为srt格式: " + text)
             result = result + tmp_result
 
             t+=1
-        logging.info("成功转为srt格式")
+        logging.info("已转为srt格式")
         return result
 
+def translate(text):
+    YOUDAO_URL = 'https://openapi.youdao.com/api'
+    
+    # 时间戳
+    curtime = str(int(time.time()))
+    # 盐值
+    salt = str(uuid.uuid1())
+    
+    # 签名input
+    size = len(text)
+    if size <= 20:
+        truncate = text
+    else:
+        truncate = text[0:10] + str(size) + text[size - 10:size]
+    # 签名
+    # 计算方法:  sha256(应用ID+input+salt+curtime+应用密钥)
+    signStr = configs.YOUDAO_APP_KEY + truncate + salt + curtime + configs.YOUDAO_APP_SECRET
+    hash_algorithm = hashlib.sha256()
+    hash_algorithm.update(signStr.encode('utf-8'))
+    sign = hash_algorithm.hexdigest()
+    
+    # post
+    data = {}
+    # 时间戳
+    data['curtime'] = curtime
+    # 源语言
+    data['from'] = 'en'
+    # 目标语言
+    data['to'] = 'zh-CHS'
+    # 签名类型
+    data['signType'] = 'v3'
+    # appKey
+    data['appKey'] = configs.YOUDAO_APP_KEY
+    # 待翻译文本
+    data['q'] = text
+    # 盐值
+    data['salt'] = salt
+    # 签名
+    data['sign'] = sign
+    # 严格模式
+    data['strict'] = "true"
+    # 用户上传的词典
+    # data['vocabId'] = "您的用户词表ID"
+
+    logging.debug(str(data))
+
+    # requests
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    response = requests.post(YOUDAO_URL, data=data, headers=headers)
+    response = json.loads(response.content.decode('UTF-8'))
+    if response["errorCode"] == "0":
+        logging.info("翻译成功: " + text)
+        logging.debug(str(response))
+        return response
+    else:
+        logging.error("翻译失败: " + text)
+        logging.debug(str(response))
+        return response
 
 def test():
-    fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
-    # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
+    # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
+    fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
     # 执行录音文件识别
-    result = json2srt(stt(configs.ACCESSKEY_ID, configs.ACCESSKEY_SECRET, configs.APPKEY, fileLink))
-    with open("output.srt", "w") as f:
+    result = json2srt(stt(configs.ALIYUN_ACCESSKEY_ID, configs.ALIYUN_ACCESSKEY_SECRET, configs.ALIYUN_APPKEY, fileLink))
+    with open("output.srt", "w", encoding="utf-8") as f:
         f.write(result)
 
 if __name__ == "__main__":
