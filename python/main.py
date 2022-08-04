@@ -187,8 +187,9 @@ def translate(i):
     sign = m.hexdigest()
     # requests
     url = 'https://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
+    id = str(random.randint(1000000000,9999999999)) + "@" + str(random.randint(10,255)) + "." + str(random.randint(10,255)) + "." + str(random.randint(10,255)) + "." + str(random.randint(10,255))
     headers = {
-        'Cookie': 'OUTFOX_SEARCH_USER_ID=-1927650476@223.97.13.65;',
+        'Cookie': 'OUTFOX_SEARCH_USER_ID='+ id +';',
         'Host': 'fanyi.youdao.com',
         'Origin': 'http://fanyi.youdao.com',
         'Referer': 'http://fanyi.youdao.com/',
@@ -210,7 +211,7 @@ def translate(i):
     }
     res = requests.post(url,headers=headers,data=data)
     response = json.loads(res.text)
-    if str(response["errorCode"]) == 0:
+    if str(response["errorCode"]) == "0":
         logging.info("翻译成功: " + i)
         logging.debug(str(response))
     else:
