@@ -1,260 +1,325 @@
 1
 00:00:00,000 --> 00:00:07,440
+今天我想和大家分享三个伪证明，它们的微妙程度依次递增，然后讨论每一个伪证明都告诉了我们什么关于数学的信息。
 today i'd like to share with you three fake proofs in increasing order of subtlety and then discuss what each one of them has to tell us about math. 
 
 2
 00:00:11,429 --> 00:00:45,689
+第一个证明是一个球面表面积的公式开始的方法是把球面细分成垂直的几块就像你可以切碎一个橙子或者画一个山毛榉球一样解开北半球所有的楔形切片，它们像这样伸出来然后对称地解开南半球的所有切片，现在把它们交叉在一起。得到一个形状它的面积我们想要算出这个形状的底部来自于球面的周长。这是一个散开的赤道，尽管它的长度是2 π乘以球面半径。
 the first proof is for a formula for the surface area of a sphere and the way that it starts is to subdivide that sphere into vertical slices the way you might chop up an orange or paint a beech ball within unravel all of those wedge slices from the northern hemisphere so that they poke up like this and then symmetrically unravel all of those from the southern hemisphere below and now interlease those. pieces to get a shape whose area we want to figure out the base of this shape came from the circumference of the sphere. it's an unraveled equator, though its length is two pi times the radius of the sphere. 
 
 3
 00:00:45,869 --> 00:01:14,370
+然后这个形状的另一边来自于其中一个楔子的高度，也就是绕球面走四分之一的距离。所以它的长度是1 / 2乘以r，这个想法是，这只是一个近似这些边可能不是完全直的，但如果我们考虑极限当我们对球面做越来越细的切片时，这个形状的面积我们想要知道它更接近于一个完美的矩形它的面积是乘以r乘以r或者换句话说。平方乘以r平方。
 and then the other side of this shape came from the height of one of these wedges, which is a quarter of a walk around the sphere. and so it has a length of pi halves times r. the idea is that this is only an approximation the edges might not be perfectly straight, but if we think of the limit as we do finer and finer slices of the sphere, this shape whose area we want to know it's closer to being a perfect rectangle one whose area will be pi times r times pi r or in other words. pi squared times r squared. 
 
 4
 00:01:14,900 --> 00:01:29,780
+证明是优雅的。它将一个困难的问题转化为更容易理解的情况。它有惊喜的元素，但仍然是直观的，唯一的错误是它完全错误。球体的真正表面积是4 r方。
 the proof is elegant. it translates a hard problem into a situation that's easier to understand. it has that element of surprise while still being intuitive, it's only fault really is that it's completely wrong. the true surface area of a sphere is four pi r squared. 
 
 5
 00:01:29,959 --> 00:01:39,859
+我最初看到这个例子是因为Henry rich公平地说，它不一定与4 r²公式不一致只要PI等于。
 i originally saw this example thanks to henry rich and to be fair, it's not necessarily inconsistent with the four pi r squared formula just so long as pi is equal to. 
 
 6
 00:01:40,040 --> 00:01:44,950
+对于下一个证明，我想给你们展示一个简单的论证来证明PI等于。
 for the next proof, i'd like to show you a simple argument for the fact that pi is equal to. 
 
 7
 00:01:45,670 --> 00:02:03,670
+我们从一个圆开始，假设半径是1，我们问，我们如何算出它的周长呢?根据定义，饼的周长与圆直径之比，我们从画一个正方形开始，它的兄弟姐妹都与这个圆相切。不难看出这个正方形的周长是8。
 we start off with a circle, say with radius one and we ask, how can we figure out its circumference after all pie is by definition the ratio of the circumference to the diameter of the circle, we start off by drawing the square whose siblings are all tangent to that circle. it's not too hard to see that the perimeter of the square is eight. 
 
 8
 00:02:03,849 --> 00:02:51,110
+你们有些人可能之前见过。这是一种经典的论证。论证通过产生一系列曲线来进行，所有这些曲线的周长也都是8，但它们越来越接近圆，但这个例子的全部细微差别并不总是被强调。首先。为了更清楚地说明这些迭代的工作方式是将前面形状的每个角落都折叠起来这样它们就刚好与圆相接你可以花点时间来说服自己每个区域都是这样的。周长没有改变，比如，在右上角这里不是先向上走，然后向左走，新曲线是先向左走，然后向上走在所有不同迭代的折叠中都有类似的情况无论之前的迭代方向是a而不是b新迭代方向是b而不是a，但长度没有减少或增加。
 then and some of you may have seen this before. it's a kind of classic argument. the argument proceeds by producing a sequence of curves, all of whom also have this perimeter of eight, but which more and more closely approximate the circle, but the full nuance of this example is not always emphasized. first of all. just to make things crystal clear the way each of these iterations works is to fold in each of the corners of the previous shape so that they just barely kiss the circle and you can take a moment to convince yourself that in each region wherefore it happened. the perimeter doesn't change, for example, in the upper right here instead of walking up and then left, the new curve goes left and then up and something similar is true at all of the folds of all of the different iterations wherever the previous iteration went direction a than direction b the new iteration goes direction b than direction a. but no length is lost or gained. 
 
 9
 00:02:51,289 --> 00:03:26,430
+有些人可能会说，显然这不能给出圆的周长因为不管你放大多少次，它仍然是外壳。这不是一条平滑的曲线。你在圆周上做了这些非常低效的步骤。最终，错误的原因是如果你想要吸取教训，这个例子告诉我们这个例子的意义并不是说任何一个近似都等于曲线。所有近似值的极限都等于这个圆为了更好地理解这个例子给我们的启示我们有必要花点时间在数学上更精确地理解我所说的序列的极限是什么意思。
 some of you might say, well, obviously this isn't gonna give the true perimeter of the circle because no matter how many iterations you do when you zoom in it remains jacket. it's not a smooth curve. you're taking these very inefficient steps along the circle while that is true. and ultimately the reason things are wrong if you want to appreciate the lesson, this example is teaching us the claim of the example is not that any one of these approximations equals the curve. it's that the limit of all of the approximations equals our circle and to appreciate the lesson that this example teaches us it's worth taking a moment to be a little more mathematically precise about what i mean by the limit of a sequence of. 
 
 10
 00:03:27,020 --> 00:03:55,639
+假设我们描述了第一个形状。这个平方函数是一个参数函数，它的输入是t输出是d空间中的一个点所以当t从0到1，它沿着这个平方函数。我把这个函数命名为c0同样，我们可以用一个函数来参数化下一次迭代，我把它命名为c因为参数t从0到1这个函数的输出沿着那条曲线。这样我们就可以把这些形状看成函数。
 let's say we described the very first shape. this square is a parametric function, something that has an input t and it outputs a point in d space so that as t ranges from zero to one, it traces that square. i'll call that function c zero and likewise we can parameterize the next iteration with a function i'll call c as the parameter t ranges from zero up to one the output of this function traces along that curve. this is just so that we can think of these shapes as instead being functions. 
 
 11
 00:03:55,879 --> 00:04:14,479
+现在我想让你考虑t的一个特定值，可能是0.2然后考虑你通过在这个特定点对函数序列求值得到的点序列。现在我想让你们考虑n趋于无穷时c2的极限。
 now i want you to consider a particular value of t maybe zero point two and then consider the sequence of points that you get by evaluating the sequence of functions we have at this particular point. now i want you to consider the limit as n approaches infinity of c sub n of zero point two. 
 
 12
 00:04:14,750 --> 00:04:34,850
+这个极限是d空间中一个确定的点。事实上，这个点在圆上对于0点2并没有什么特别的我们可以对任何输入t进行极限处理所以我可以定义一个新函数，我称它为c∞。根据定义，在任意输入t处，它等于所有曲线的极限值。
 this limit is a well defined point in d space. in fact, that point sits on the circle and there's nothing specific about zero point two we could do this limiting process for any input t and so i can define a new function that i'll call c infinity. which by definition at any input t is whatever this limiting value for all the curves it is. 
 
 13
 00:04:35,029 --> 00:04:49,120
+这就是c∞的极限函数是圆的原因。它不是圆的近似。这不是什么锯齿状的圆圈。它是真正的光滑的圆曲线，我们想知道它的周长。
 so here's the point that limiting function c infinity is the circle. it's not an approximation of the circle. it's not some jagged version of the circle. it is the genuine smooth circular curve whose perimeter we want to know. 
 
 14
 00:04:49,360 --> 00:04:59,029
+同样成立的是所有曲线长度的极限都是8因为每条曲线的周长都是8。
 and what's also true is that the limit of the lengths of all of our curves really is eight because each individual curve really does have a perimeter of eight. 
 
 15
 00:04:59,209 --> 00:05:14,610
+在微积分中有各种各样的例子当我们把我们想要知道的东西近似为一堆其他东西的极限时这些东西就更容易理解了。所以这里的核心问题是为什么在这个例子中不可以这样做。
 and there are all sorts of examples throughout calculus when we talk about approximating one thing we want to know as a limit of a bunch of other things that are easier to understand. so the question at the heart here is why exactly is it not okay to do that in this example, so. 
 
 16
 00:05:16,720 --> 00:05:56,759
+也许在这一点上，你退一步说，你知道仅仅让事物看起来一样是不够的。这就是为什么我们需要严格。这就是为什么我们需要证明。这就是为什么从欧几里得时代起数学家们就跟随他的脚步一步一步地从公理推导出真理。但对于最后一个例子，我想做一些不太依赖于视觉直觉的事情而是给出欧几里得式的证明来证明所有三角形都是等腰的方法就是选取任意一个特定的三角形，不做任何假设。我把它的顶点标记为ab c我想给你们证明的是边长ab一定等于边长。
 and maybe at this point, you step back and say, you know it's just not enough for things to look the same. this is why we need rigor. it's why we need proofs. it's why since the days of euclid mathematicians have followed in his footsteps and deduced truths step by step from axioms forward. but for this last example, i would like to do something that doesn't lean as hard on visual intuition and instead give a euclid style proof for the claim that all triangles are isosceles the way this will work is will take any particular triangle and make no assumptions about it. i'll label its vertices a, b and c and what i would like to prove for you is that the side length ab is necessarily equal to the side length. 
 
 17
 00:05:57,050 --> 00:06:14,600
+现在，要清楚的是，在我画的图中，结果显然是错误的，你可以直观地看到，这些长度彼此不相等。但我质疑你们能否找出证明的错误之处。我要给你们看的是，它非常微妙，能识别它的人可以得到三颗金星。
 now, to be clear, the result is obviously false in the diagram i've drawn, you can visually see that these lengths are not equal to each other. but i challenge you to see if you can identify what's wrong about the proof. i'm about to show you honestly, it's very subtle and three gold stars for anyone who can identify it. 
 
 18
 00:06:14,870 --> 00:06:24,970
+我要做的第一件事是画出直线b c的垂直平分线这意味着这个角是90度根据定义，这个长度和这个连杆的长度相同。
 the first thing i'll do is draw the perpendicular bisector of the line b c. so that means this angle here is ninety degrees and this length is by definition the same as this link. 
 
 19
 00:06:25,310 --> 00:06:27,899
+我们把这个交点标记出来。
 and we'll label that intersection. 
 
 20
 00:06:28,300 --> 00:06:48,399
+然后画出a处的角平分线也就是说，根据定义，这个小角和这个小角是相等的。我把它们都标为alpha我们会说这两个点的交点是p现在就像很多欧几里得式的证明一样我们会画一些新的线，找出什么东西必须相等然后得出一些结论。
 and then next i will draw the angle bisector at a. which means by definition, this little angle here is the same as this little angle here. i'll label both of them alpha and we'll say that the point where these two intersect is p and now like a lot of euclid style proofs were just going to draw some new lines, figure out what things must be equal and get some conclusion. 
 
 21
 00:06:48,579 --> 00:06:56,600
+举个例子，我们从p开始画一条直线，它垂直于边长a c我们把交点标记出来。
 for instance, let's draw the line from p, which is perpendicular to the side length a c and we'll label that intersection point. 
 
 22
 00:06:57,069 --> 00:07:53,230
+同样地，我们都画一条线，从p到另一条边的长度是c，它是垂直的，将交点标记为f我的第一个断言是这个三角形，f p和这个三角形a.e.p相等或者至少相等。这是根据这个自行车角的对称性来的更具体地说，我们可以说它们有一条边长它们都有一个角和一个90度角。然后是边角角并并关系。也许我画得有点草率，但逻辑上我们可以看出它们必须相等从p到b再从p到c我断言这个三角形等于它在垂直平分线上的反射。这种对称性或许有助于说明这一点。更严格地说，它们的底是一样的。它们都是90度。
 and likewise, we all draw the line from p down to the other side length a c again, it's perpendicular and will label that intersection point f my first claim is that this triangle here, which is a f p is the same or at least congruent to this triangle over here a.e.p. essentially. this follows from symmetry across that angle bicycle more specifically, we can say they share a side length and then they both have an angle alpha and both have an angle ninety degrees. so it follows by the side angle angle concurrence relation. maybe my drawing is a little bit sloppy, but the logic helps us see that they do have to be the same next eldra aligned from p down to b and then from p down to c and i claim that this triangle here is congruent to its reflection across that perpendicular bisector again. the symmetry maybe helps make this clear. but more rigorously they both have the same base. they both have a ninety degree. 
 
 23
 00:07:53,230 --> 00:08:04,470
+它们都有相同的高度。虽然它后面有边角边关系。基于第一对三角形，我标记一下这里的边长和这里的边长是相等的。用双勾标记它们。
 and they both have the same height. though it follows by the side angle side relation. so based on that first pair of triangles, i'm gonna mark this side length here is being the same as this side length here. marking them with double tick marks. 
 
 24
 00:08:04,779 --> 00:08:27,980
+基于第二个三角关系。我标记一下这条边长和这条相等，用三倍粗的标记。由此，我们又得到了两个相等的三角形。也就是这条边和这条边对应的边长这里的原因是它们都有三条边。两边都是直角三角形。
 and based on the second triangle relation. i'll mark this side length here is the same as this line over here, marking them with triple thick marks. and so from that, we have two more triangles that need to be the same. namely this one over here and the one with corresponding to side length over here and the reasoning here is they both have that triple ticked side. a double tipped side and they're both ninety degree triangles. 
 
 25
 00:08:28,180 --> 00:08:31,649
+然后是边边角同余关系。
 but this follows by the side side angle congruence relation. 
 
 26
 00:08:31,850 --> 00:08:41,879
+所有这些都是有效的同余关系。我不会用这些来蒙蔽你们的双眼所有这些基本上足以告诉我们为什么b必须和b.c相同。
 and all of those are valid congruence relations. i'm not pulling the wool over your eyes with one of those and all of this will basically be enough to show us why a b has to be the same as b.c.. 
 
 27
 00:08:42,129 --> 00:08:50,960
+第一对三角形意味着长度af与长度ae是彼此对应的边。我就跟着他们进去，看这里。
 the first pair of triangles implies that the length af is the same as the length ae was a corresponding sides to each other. i'll just follow them in, read here. 
 
 28
 00:08:51,139 --> 00:08:58,899
+最后一个三角形关系保证了边fb和边e是相等的。
 and then that last triangle relation guarantees for us that the side fb is gonna be the same as the side e. 
 
 29
 00:08:59,460 --> 00:09:11,600
+和颜色。这两个都是蓝色的最后我们想要的结果来自于这两个方程的相加。a f + b的长度显然等于a b的总长度。
 and of color. both of those in blue and finally the result we want basically comes from adding up these two equations. the length a f plus f b is clearly the same as the total length a b. 
 
 30
 00:09:11,779 --> 00:09:27,210
+同样的，ae + ec的长度和c的总长度是一样的，尽管总的来说ab的边长和c的边长是一样的因为我们没有对三角形做任何假设，这意味着我看到的任何三角形都是a。
 and likewise, the length a e plus e c is the same as the total length a c, though all in all the side length a b has to be the same as the side length a c and because we made no assumptions about the triangle, this implies that any triangle is i saw a. 
 
 31
 00:09:27,399 --> 00:09:34,330
+事实上，因为我们没有对我们选择的特定的两条边做任何假设，这意味着任何三角形都是等边的。
 actually, for that matter, since we made no assumptions about the specific two sides we chose, it implies that any triangle is equilateral. 
 
 32
 00:09:35,309 --> 00:09:49,250
+这就给我们留下了三种不同的可能性。所有三角形都是等边的。这就是宇宙的真相或者你可以用YouTube式的推理得出错误的结果或者证明中有错误的地方。
 so this leaves us somewhat disturbingly with three different possibilities. all triangles really are equilateral. that's just the truth of the universe or you can use youtube style reasoning to derive false results or there's something wrong in the proof. 
 
 33
 00:09:49,429 --> 00:09:51,909
+但如果有的话，它到底在哪里。
 but if there is where exactly is it. 
 
 34
 00:09:54,659 --> 00:09:57,960
+那么这三个例子到底是怎么回事呢?
 so what exactly is going on with these three examples. 
 
 35
 00:09:58,259 --> 00:10:08,220
+关于球面的第一个例子有点麻烦的是它在精神上和很多其他著名的，被认为是真实的几何视觉证明非常相似。
 now the thing that's a little bit troubling about that first example with the sphere is that it is very similar in spirit to a lot of other famous and supposedly true visual proofs from geometry. 
 
 36
 00:10:08,450 --> 00:10:20,409
+例如，有一个非常著名的关于圆的面积的证明首先把它分成一堆小的披萨楔然后把所有这些楔拉直，本质上就是把披萨的外皮对齐。
 for example, there's a very famous proof about the area of a circle that starts off by dividing it into a bunch of little pizza wedges and you take all those wedges and you straighten them out, essentially lining up the crust of that pizza. 
 
 37
 00:10:20,590 --> 00:10:45,139
+然后我们取一半的楔子，把它们和另一半分开。这个想法是，这可能不是一个完美的矩形。它有一些起伏和曲线，但当你取越来越薄的切片时，你会得到一个越来越接近真正的矩形的东西而矩形的宽度是这个圆的周长的一半。根据定义就是乘以r然后这个矩形的高来自于它们的半径。
 and then we take half of the wedges and interslice them with the other half. and the idea is that this might not be a perfect rectangle. it's got some bumps and curves, but as you take thinner and thinner slices, you get something that's closer and closer to a true rectangle and the width of that rectangle comes from half the circumference of the circle. which is by definition pi times r and then the height of that rectangle comes from the radius of the are. 
 
 38
 00:10:45,480 --> 00:10:48,250
+这意味着整个面积是r的平方。
 meaning that the whole area is pi r squared. 
 
 39
 00:10:48,610 --> 00:10:56,960
+这次的结果是有效的，但是为什么我们对球体做的那样不行，但对披萨片做的那样就可以了。
 this time the result is valid, but why is it not ok to do what we did with the spheres, but somehow it is ok to do this with the pizza slices. 
 
 40
 00:10:57,460 --> 00:11:54,350
+球面理论的主要问题是当我们把这些橙色的楔子拉平时，如果我们能精确地做到在保留它们面积的前提下，它们看起来不像三角形，它们应该向外凸出如果你想看这个。让我们认真地思考一下球面上一个特定的楔形然后问自己楔形上的宽度这一小部分纬度线是如何随着你在楔形上上下移动而变化的特别是，如果你考虑从z轴到楔形上一点的角度当我们沿着它走的时候宽度的长度是多少作为费用的函数。对于那些对这些东西的细节感兴趣的人，你们可以先画这条线从z轴到楔形上的一点，它的长度是球面半径的r倍。这个角度的符号可以让我们推断出我们所在的纬度线有多长。基本上就是2乘以射电直线2 r符号。
 the main problem with the sphere argument is that when we flatten out all of those orange wedges, if we were to do it accurately in a way that preserves their area, they don't look like triangles, they should bulge outward and if you want to see this. let's think really critically about just one particular one of those wedges on the sphere and ask yourself how does the width across that wedge this little portion of a line of latitude vary as you go up and down the wedge in particular, if you consider the angle thee from the z axis down to a point on this wedge as we walk down it what's the length of that width as a function of fee. for those of you curious about the details of these sorts of things, you'd start off by drawing this line up here from the z axis to a point on the wedge, its length will be the radius of the sphere r times. the sign of this angle that lets us deduce how long the total line of latitude is where we're sitting. uh, it'll basically be two pi times that radio line two pi r sign of the. 
 
 41
 00:11:54,350 --> 00:12:17,669
+然后我们所关心的楔形的宽度是整个纬度线的某个常数比例。现在细节不太重要了。我想让你们注意的一件事是这不是一个线性关系当你从那个楔形的顶部走到底部的时候租费从0到PI的一半楔形的宽度不是线性增长的。相反，它是按照正弦曲线增长的。
 and then the width of the wedge that we care about is just some constant proportion of that full line of latitude. now the details don't matter too much. the one thing i want you to notice is that this is not a linear relationship as you walk from the top of that wedge down to the bottom letting fee range from zero up to pi halves the width of the wedge doesn't grow linearly. instead, it grows according to a sine curve. 
 
 42
 00:12:18,139 --> 00:12:27,570
+所以当我们打开这些楔形物的时候，如果我们想要保留它们的智慧，它们应该在底部有一点丰满。它们的边长不是线性的。
 and so when we're unwrapping all of these wedges, if we want those wits to be preserved, they should end up a little bit chubbier around the base. their side lengths are not linear. 
 
 43
 00:12:27,779 --> 00:12:43,360
+这意味着当我们试图将北半球的楔形和南半球的楔形交织在一起时，在这些非线性的边缘之间有大量的重叠我们不能放弃一个有限的论点。这种重叠会随着细分越来越细而持续存在。
 what this means is when we tried to interlace all of the wedges from the northern hemisphere with those from the southern, there is a meaningful amount of overlap between those non-linear edges and we can't waive our hands about a limiting argument. this is an overlap that persists as you take finer and finer subdivision. 
 
 44
 00:12:43,539 --> 00:12:51,419
+最终，正是这种重叠导致了假的平方和4的真的答案之间的差异。
 and ultimately, it's that overlap that accounts for the difference between our false answer with a pi squared from the true answer that has four pi. 
 
 45
 00:12:51,600 --> 00:13:26,659
+这让我想起了那些重新排列的谜题，你有许多块，只是通过移动它们，你似乎可以凭空创造出一个区域。举个例子，现在我已经把这些碎片排列成一个三角形除了中间少了两个单位的面积我想让你们关注三角形的顶点，这些白点。这些不要动。我可没耍什么花招。但是我可以重新排列所有的部分回到它们原来的样子中间的两个单位面积似乎消失了。所有组成部分保持不变。它们形成的三角形保持不变，但两个单位的面积似乎不知道从哪里冒出来。
 it reminds me of one of those rearrangement puzzles where you have a number of pieces and just by moving them around, you can seemingly create area out of nowhere. for example, right now i have arranged all these pieces to form a triangle except it's missing two units of area in the middle and i want you to focus on the vertices of that triangle, these white dots. those don't move. i'm not pulling any trickery with that. but i can rearrange all of the pieces back to how they originally were that those two units of area in the middle seemed to disappear. all the constituent parts remain the same. the triangle that they form remains the same and yet two units of area seem to appear out of nowhere. 
 
 46
 00:13:27,009 --> 00:13:33,230
+如果你以前没见过这个。顺便说一下，我强烈建议你们停下来，试着思考一下。这是一个非常有趣的小谜题。
 if you've never seen this one before. by the way, i highly encourage you to pause and try to think it through. it's a very fun little puzzle. 
 
 47
 00:13:33,610 --> 00:13:45,980
+如果我们仔细地画出这个三角形的边缘，并放大到足够近的距离，看看我们的碎片实际上并不适合这个三角形，它们稍微鼓出来了。
 the answer starts to reveal itself if we carefully draw the edges of this triangle and zoom in close enough to see that our pieces don't actually fit inside the triangle they bulge out ever so slightly. 
 
 48
 00:13:46,159 --> 00:14:23,080
+或者至少是像这样排列的，它们会稍微凸出来当我们重新排列它们的时候我们把镜头放大，我们可以看到它们向内凹得非常小凸出和向内之间非常细微的差别就解释了所有的面积差异。这个蓝色三角形的边的斜率是5 / 2这个红色三角形的边的斜率是7 / 3。这些数字足够接近，看起来很像斜率，但它们考虑到了这种向内的凹陷和向外的凸起。当你没有明确地确认它们实际上是直的时候，你必须对那些看起来直的线条保持警惕。
 or at least arranged like this, they bulge out ever so slightly when we rearrange them and we zoom back in, we can see that they dent inward ever so slightly and that very subtle difference between the bulge out and the dead inward accounts for all of the difference in area. the slope of the edge of this blue triangle works out to be five divided by two where's the slope of the edge of this red triangle works out to be seven divided by three. those numbers are close enough to look similar as slope, but they allow for this denting inward and the bulging outward. you have to be wary of lines that are made to look straight when you haven't had explicit confirmation that they actually are straight up. 
 
 49
 00:14:24,240 --> 00:14:40,809
+一个快速添加评论的领域。这里的基本问题是曲面的几何形状与平面空间的几何形状有本质上的不同。相关的搜索项是高斯曲率。你不可能在不丢失几何信息的情况下把球体弄平。
 one quick added comment on the sphere. the fundamental issue here is that the geometry of a curved surface is fundamentally different from the geometry of flat space. the relevant search term here would be gaussian curvature. you can't flatten things out from a sphere without losing geometric information. 
 
 50
 00:14:40,990 --> 00:14:48,289
+现在，当你看到与球面上的小块相关的有限的论点，这些小块在某种程度上被弄平了，并被推理出来。
 now, when you do see limiting arguments that relate to little pieces on a sphere that somehow get flattened out and are reasoned through. 
 
 51
 00:14:48,470 --> 00:14:58,679
+只有当你所说的极限部分在两个方向上都变小的时候，它们才成立。只有当你放大接近一个曲面时，它才会在局部看起来是平坦的。
 those only can work if the limiting pieces that you're talking about get smaller in both directions. it's only when you zoom in close to a curved surface that it appears locally flat. 
 
 52
 00:14:58,860 --> 00:15:09,090
+橙色楔子的问题是我们的碎片从来没有暴露在局部的平坦中因为它们只在一个方向上变薄。它们保持另一个方向的曲率。
 the issue with our orange wedge argument is that our pieces never got exposed to that local flatness because they only got thin in one direction. they maintain the curvature in that other direction. 
 
 53
 00:15:09,269 --> 00:15:24,509
+现在说到极限论证的微妙之处，让我们回到接近光滑圆曲线的锯齿曲线的极限。就像我说的。极限曲线实际上是一个圆，近似值的极限值实际上是8。
 now on the topic of the subtlety of limiting arguments, let's turn back to our limit of jagged curves that approaches the smooth circular curve. as i said. the limiting curve really is a circle and the limiting value for the length of your approximations really is eight. 
 
 54
 00:15:25,309 --> 00:15:37,600
+这里的基本问题是，没有理由期望曲线长度的极限与曲线极限的长度相同。事实上。这是一个很好的反例来说明为什么情况并非如此。
 here the basic issue is that there is no reason to expect that the limit of the length of the curves is the same as the length of the limits of the curves. and in fact. this is a nice counter example to show why that's not the case. 
 
 55
 00:15:38,139 --> 00:15:50,309
+这个例子的真正意义不在于担心有人会相信它表明π等于4。相反，它显示了为什么在其他情况下，当人们应用限制论点时，需要注意。
 the real point of this example is not the fear that anyone is ever going to believe that it shows that pi is equal to four. instead, it shows why care is required in other cases where people apply limiting arguments. 
 
 56
 00:15:50,490 --> 00:15:57,960
+例如，这在微积分中经常发生。这是微积分的核心你想知道给定曲线下的面积。
 for example, this happens all throughout calculus. it is the heart of calculus where say you want to know the area under a given curve. 
 
 57
 00:15:58,139 --> 00:16:20,470
+我们通常的思考方式是用一组矩形来近似它因为这些是我们知道如何计算面积的东西在每种情况下只需要用底乘以高。这是一个非常参差不齐的近似。但是当你把越来越细的细分成越来越细的矩形时，这些面积的总和就会接近我们真正关心的东西。
 the way we typically think about it is to approximate that with a set of rectangles because those are the things we know how to compute the areas of you just take the base times height in each case. now this is a very jagged approximation. but the thought or against the hope is that as you take a finer and finer subdivision into thinner and thinner rectangles, the sums of those areas approaches, the thing we actually care about. 
 
 58
 00:16:20,820 --> 00:16:29,200
+如果你想让它更严谨。你必须明确这些近似的误差和我们关心的曲线下的面积之间的误差。
 if you want to make it rigorous. you have to be explicit about the error between these approximations and the true thing we care about the area under this curve. 
 
 59
 00:16:29,450 --> 00:16:51,149
+例如，你可以这样开始你的论证，误差必须严格小于这些红色矩形的面积。本质上，曲线和近似矩形之间的偏差严格地在红色区域内然后你会想说的是，在这个极限过程中，所有这些红色矩形的累积面积必须趋近于零。
 for example, you might start your argument by saying that that error has to be strictly less than the area of these red rectangles. essentially the deviation between the curve and are approximating rectangles sits strictly inside that red region and then what you would want to argue is that in this limiting process, the cumulative area of all of those red rectangles has to approach zero. 
 
 60
 00:16:57,320 --> 00:17:28,339
+最后一个例子，证明所有三角形都是等腰三角形。让我给你们展示一下如果我在构造角平分线的时候稍微小心一点而不是目测的话，相关的交点实际上在三角形的外面然后从这里开始，如果我按照我们在原来的论证中做的，画出相关的垂线。所有这些。我说的每个三角形都是全等的。所有这些都是真的这些三角形对应的长度是相同的。
 now, as to the final example, our proof that all triangles are isosceles. let me show you what it looks like if i'm a little bit more careful about actually constructing the angle bisector rather than just eyeballing it when i do that, the relevant intersection point actually sits outside of the triangle and then from there, if i go through everything that we did in the original argument, drawing the relevant perpendicular lines. all of that. every triangle that i claimed was congruent really is congruent. all of those were genuinely true and the corresponding length of those triangles that i claimed were the same really. 
 
 61
 00:17:28,519 --> 00:17:37,630
+证明失败的地方是在最后当我说c的整个边长等于e + c。
 the one place where the proof breaks down is at the very end when i said that the full side length a c was equal to a e plus e c. 
 
 62
 00:17:37,809 --> 00:17:49,750
+这只有在隐藏的假设下才成立e位于它们之间，但实际上。对于很多三角形来说，这个点在这两个点之外。这很微妙，不是吗?
 that was only true under the hidden assumption that that point e sat in between them, but in reality. for many triangles that point would sit outside of those two. it's pretty subtle, isn't it. 
 
 63
 00:17:51,529 --> 00:18:01,000
+所有这些的重点是，虽然视觉直觉很好，视觉证明经常给你一个很好的方式来阐明在其他不透明的严格操作中发生了什么。
 the point in all of this is that while visual intuition is great and visual proofs often give you a nice way of elucidating what's going on with otherwise opaque riger. 
 
 64
 00:18:01,200 --> 00:18:11,180
+视觉化的论证和时髦的图表永远无法消除数学中批判性思维的需要。您不能逃避寻找隐藏的假设和边缘情况的需要。
 visual arguments and snazzy diagrams will never obviate the need for critical thinking in math. you cannot escape the need to look out for hidden assumptions and edge cases. 
 
 65
 00:18:33,130 --> 00:18:33,809
+毫米。
 mm. 
 
