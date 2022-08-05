@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
-from os import truncate
 import configs
 
+import os
 import sys
 import json
 import time
+import requests
+import hashlib
+import random
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
-import requests
-import hashlib
-import random
 
 # Log
 import logging
@@ -168,7 +168,6 @@ def json2srt(json):
             tmp_result = tmp_result + text + "\n"
             tmp_result = tmp_result + "\n"
             
-            logging.info("成功转为srt格式: " + text)
             result = result + tmp_result
 
             t+=1
@@ -219,6 +218,16 @@ def translate(i):
         logging.debug(str(response))
     return response
 
+def audio_separate(file_path):
+    output_name = file_path[:file_path.rfind(".")]+".mp3"
+    cmd = os.popen(".\\bin\\ffmpeg.exe -i \""+file_path+"\" -f mp3 -ar 16000 -ab 160 \""+output_name+"\" -y ")
+    result = cmd.read()
+    if os.path.exists(output_name) and os.stat(output_name).st_size > 0:
+        return output_name
+    else:
+        return
+    
+
 def test():
     # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
     fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
@@ -228,8 +237,13 @@ def test():
         f.write(result)
 
 if __name__ == "__main__":
+    # 切换工作目录
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    # 测试
+    # audio_separate(sys.argv[1])
     test()
     exit()
+    
     # 参数判断
     if len(sys.argv) != 2:
         logging.warning("请提供文件路径")
