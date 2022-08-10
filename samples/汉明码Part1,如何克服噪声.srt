@@ -1,0 +1,465 @@
+1
+00:00:00,000 --> 00:00:00,960
+所以。
+so. 
+
+2
+00:00:03,779 --> 00:00:10,449
+你有没有想过，怎么可能刮一张CD或DVD，还能播放它，不管它的故事是什么。
+have you ever wondered how it's possible to scratch a cd or a dvd and still have it play back, whatever its story. 
+
+3
+00:00:10,630 --> 00:00:27,870
+刮痕确实会影响磁盘上的1和0，所以它会从存储的数据中读取不同的数据，但除非它真的刮痕，否则它读取的比特会被解码成完全相同的文件编码到它上面尽管有这些错误，但禁止复制。
+the scratch really does affect the ones and zeros on the disk, so it reads off different data from what was stored, but unless it's really scratched up the bits that it reads off are decoded into precisely the same file that was encoded onto it a bit forbid copy despite all of those errors. 
+
+4
+00:00:28,050 --> 00:00:50,299
+有一大堆的数学智慧让我们能够存储数据，同样重要的是，以一种对错误有弹性的方式传输数据。好吧，实际上，想出一个方法来处理任何文件并不需要太多的聪明才智，无论是视频，声音，文本，代码和图像，最终是一些由1和0组成的序列。
+there is a whole pile of mathematical cleverness that allows us to store data and just as importantly to transmit data in a way that is resilient to errors. well, okay, actually, it doesn't take that much cleverness to come up with a way to do this any file, whether it's a video or sound or text some code and image, whatever is ultimately some sequence of ones and zeros. 
+
+5
+00:00:50,479 --> 00:00:56,380
+纠正任何被翻转的比特位的一个简单的策略是存储每个比特位的三个副本。
+and a simple strategy to correct any bit that gets flipped would be to store three copies of each. 
+
+6
+00:00:57,340 --> 00:01:04,569
+然后读取该文件的机器可以比较这三份副本，并总是从三份中提取最好的两份，每当有差异和。
+then the machine reading this file could compare these three copies and always take the best two out of three whenever there's a discrepancy and. 
+
+7
+00:01:07,099 --> 00:01:17,530
+但这意味着使用三分之二的空间来冗余，即使这样，所有的空间都被放弃了。如果超过一个比特被翻转，并不能保证会发生什么。
+but what that means is using two thirds of your space for redundancy and even then, for all of that space given up. there's no strong guarantee about what happens if more than one bit gets flipped. 
+
+8
+00:01:17,790 --> 00:01:54,900
+更有趣的问题是，如何在尽可能少地占用空间的情况下纠正错误。例如，使用你将在本视频中学习的方法。你可以把你的数据存储在256位块中每个块使用9位9作为一种冗余而其他247位可以自由携带任何有意义的信息或数据这仍然会是这样的情况如果任何位在这里被翻转仅仅通过观察这个块机器就能识别出有一个。错误和准确的位置，使它知道如何纠正它。老实说，这感觉就像魔术一样。
+the much more interesting question is how to make it so that errors can be corrected while giving up as little space as possible. for example, using the method that you'll learn about this video. you could store your data in two hundred fifty six bit blocks where each block uses nine bits nine to act as a kind of redundancy and the other two hundred forty seven bits are free to carry whatever meaningful message or data that you want and it will still be the case that if any bit gets flipped here just by looking at this block and nothing more a machine will be able to identify that there was an. error and precisely where it was so that it knows how to correct it. and honestly, that feels like magic. 
+
+9
+00:01:55,159 --> 00:02:03,219
+在这个特殊的方案中，如果两个比特被翻转，机器至少会发送文本通知有两个错误，尽管它不知道如何修复它们。
+and for this particular scheme, if two bits get flipped, the machine will at least be able to text that there were two errors, though it won't know how to fix them. 
+
+10
+00:02:03,400 --> 00:02:07,280
+我们稍后会讲到它如何对不同大小的块进行缩放。
+we'll talk a little bit later about how this scales for blocks with different sizes. 
+
+11
+00:02:07,530 --> 00:02:13,240
+允许您这样纠正错误的方法被称为错误纠正代码。
+methods that let you correct errors like this are known reasonably enough as error correction codes. 
+
+12
+00:02:13,460 --> 00:02:22,289
+在上个世纪的大部分时间里，这一领域一直是一个非常丰富的资源，包含了我们日常使用的设备中令人惊讶的深度数学。
+for the better part of the last century, this field has been a really rich source of surprisingly deep math that gets incorporated into devices we use every day. 
+
+13
+00:02:22,680 --> 00:02:29,060
+我们的目标是让你们对最早的例子之一汉明码有一个非常透彻的理解。
+the goal here is to give you a very thorough understanding of one of the earliest examples known as a hamming code. 
+
+14
+00:02:29,240 --> 00:02:46,939
+顺便说一下，我思考这个视频结构的方法不是尽可能直接地解释它，而是鼓励你们自己发明它，在这里和那里有一些温和的指导。所以当你觉得你在某个时刻看到了它的走向，停下来，在我告诉你之前，积极地预测这个计划会是什么。
+and by the way, the way i'm thinking about the structure of this video is less about explaining it as directly as possible and more matter of prompting you to invent it for yourself with a little gentle guidance here and there. so when you feel like you see where it's going at some point, take that moment to pause, actively predict what the scheme is going to be before i tell you. 
+
+15
+00:02:47,180 --> 00:02:58,780
+此外，如果你想了解硬件层面的知识，本·eater还制作了一段视频，向你展示如何在红牌上实现汉明码，这让你非常满意。
+also, if you want your understanding to get down to the hardware level, ben eater has made a video in conjunction with this one showing you how to actually implement hamming codes on red boards, which is extremely satisfying. 
+
+16
+00:02:58,960 --> 00:03:13,370
+现在你应该知道汉明码不像里德·所罗门算法这样更现代的代码那样被广泛使用，但有一种神奇的对比，一开始觉得这个任务是多么不可能，而一旦你学会了拥有它就会觉得它是多么合理。
+now you should know hamming codes are not as widely used as more modern codes like the reed solomon algorithm, but there is a certain magic to the contrast between just how impossible this task feels at the start and how utterly reasonable it seems once you learn about having. 
+
+17
+00:03:13,900 --> 00:03:27,229
+纠错的基本原则是，在所有可能的信息的巨大空间中，只有一些子集会被认为是有效的信息作为一个类比，想想拼写正确的单词和拼写错误的单词。
+the basic principle of error correction is that in a vast space of all possible messages, only some subset are going to be considered valid messages as an analogy, think about correctly spelled words versus incorrectly spelled words. 
+
+18
+00:03:28,699 --> 00:03:37,870
+当有效消息被更改时，接收方负责将其看到的内容更正回最近的有效邻居，就像处理打印错误一样。
+whenever a valid message gets altered, the receiver is responsible for correcting what they see back to the nearest valid neighbor as you might do with a typo. 
+
+19
+00:03:38,050 --> 00:03:44,409
+提出一个具体的算法来有效地对这样的消息进行分类，尽管这需要一定的聪明才智。
+coming up with a concrete algorithm to efficiently categorize messages like this, though takes a certain cleverness. 
+
+20
+00:03:46,860 --> 00:04:15,710
+故事开始于20世纪40年代当时年轻的理查德·汉明在贝尔实验室工作他的一些工作涉及到使用一台非常大的昂贵的打卡计算机他只能使用有限的访问他一直在运行的程序总是失败因为时不时地会有一些被误读的挫折就像发明的熔炉他受够了他发明了世界上第一个错误。纠错码，有许多不同的方法来框定汉明码。但作为第一步，我们要用汉明自己的方法。
+the story begins in the nineteen forties when a young richard hamming was working for bell labs and some of his work involved using a very big expensive punch-card computer that he had only limited access to and the programs he kept putting through it kept failing because every now and then a bit would get misread frustration being the crucible of invention he got so fed up that he invented the world's first error. correction code, there are many different ways to frame hamming codes. but as a first pass, we're going to go through it the way that hamming himself thought. 
+
+21
+00:04:16,240 --> 00:04:25,259
+让我们用一个简单但不太简单的例子。一个16位的块将这些位的位置从0到15和编号。
+let's use an example that's simple but not too simple. a block of sixteen bits will number the positions of these bits from zero up to fifteen and. 
+
+22
+00:04:25,439 --> 00:04:48,000
+我们想要存储的实际数据只有12个比特，而其中4个位置将被保留，作为一种冗余。这里的冗余并不仅仅意味着复制毕竟这些禁止没有给我们足够的空间去盲目复制数据。相反，它们需要更细致、更巧妙的冗余，不是添加任何新信息，而是增加弹性。
+the actual data that we want to store is only going to make up twelve of these bits, while four of the positions are going to be reserved as a kind of redundancy. the word redundant here doesn't simply mean copy after all those forbids don't give us enough room to blindly copy the data. instead, they'll need to be a much more nuanced and clever kind of redundancy, not adding any new information, but adding resilience. 
+
+23
+00:04:48,410 --> 00:04:59,879
+你可能会期望这四个特殊的部分会很好地组合在一起，可能在结尾或类似的地方。但你会看到，把它们放在2的幂位置上最终会得到非常优雅的结果。
+you might expect these four special bits to come nicely packaged together, maybe at the end or something like that. but as you will see, having them sit in positions which are powers of two allows for something that's really elegant by the end. 
+
+24
+00:05:00,060 --> 00:05:04,220
+这也可能会给你一些提示，让你知道这对于更大的块是如何缩放的。
+it also might give you a little hint about how this scales for larger blocks. 
+
+25
+00:05:04,959 --> 00:05:13,360
+而且，从技术上讲，它最终只有11位数据。你会发现在位置0有一个温和的，微妙的变化，但现在不用担心。
+also, technically, it ends up being only eleven bits of data. you'll find there's a mild, nuanced for what goes on at position zero, but don't worry about that now. 
+
+26
+00:05:13,839 --> 00:05:42,079
+就像任何纠错算法一样，这将涉及到两个上升者负责设置这四个特殊位，然后一个接收器负责执行某种检查。然后纠正错误，当然，“发送者”和“接收者”这两个词实际上指的是进行所有检查的机器或软件，而“信息”这个概念的含义非常广泛，包括存储等东西。毕竟，存储数据就相当于将信息从过去发送到未来，而不是从一个地方发送到另一个地方。
+like any error correction algorithm, this will involve two players ascender who's responsible for setting these four special bits and then a receiver who's responsible for performing some kind of check in. then correcting the errors, of course, the word sender and receiver really refer to machines or software that's doing all the checks and the idea of a message is meant really broadly to include things like storage. after all, storing data is the same thing as sending a message just from the past to the future instead of from one place to another. 
+
+27
+00:05:42,290 --> 00:05:54,259
+这就是设置，但在我们开始之前。我们需要谈谈一个相关的想法，这个想法在hemming发现的时候还很新鲜，一种让你检测任何一个比特错误但不能纠正它们的方法。
+so that's the set up, but before we can dive in. we need to talk about a related idea which was fresh on hemming's mind in the time of his discovery, a method which lets you detect any single bit errors but not to correct them. 
+
+28
+00:05:54,439 --> 00:05:56,670
+这在业界被称为恶搞支票。
+known in the business as a parody check. 
+
+29
+00:05:56,980 --> 00:06:04,410
+对于模仿检查，我们只分离出一个比特，由发送方负责调优，其余的可以自由携带消息。
+for a parody check, we separate out only one single bit that the sender is responsible for tuning and the rest are free to carry a message. 
+
+30
+00:06:04,620 --> 00:06:11,670
+这个特殊比特的唯一工作是确保消息中1的总数是偶数。
+the only job of this special bit is to make sure that the total number of ones in the message is an even number. 
+
+31
+00:06:11,850 --> 00:06:20,480
+举个例子。现在，1的总数是7，这是奇数。所以发送者需要翻转那个特殊的位，使它成为一个计数的1，即使。
+so for example. right now, that total number of ones is seven, that's odd. so the sender needs to flip that special bit to be a one making the count even if. 
+
+32
+00:06:20,850 --> 00:06:26,879
+但如果数据块开始时已经有偶数个1，那么特殊位就会保持为0。
+but if the block had already started off with an even number of ones, then the special bit would have been kept at a zero. 
+
+33
+00:06:27,120 --> 00:06:46,939
+这非常简单，看似简单，但它是一种令人难以置信的优雅方式，可以提取消息中任何地方的变化，并反映在单个信息中，如果该消息的任何一点从0翻转到1或1到0。它使1的总数从邪恶变为奇怪。
+this is pretty simple, deceptively simple, but it's an incredibly elegant way to distill the idea of change anywhere in a message to be reflected in a single bit of information notice if any bit of this message gets flipped either from zero to one or one to zero. it changes the total count of ones from being evil to being odd. 
+
+34
+00:06:47,769 --> 00:06:57,769
+所以如果你是接收者，你看这条消息，你看到奇数个你可以确定发生了一些错误，即使你可能不知道它在哪里。
+so if you're the receiver, you look at this message and you see an odd number of ones you can know for sure that some error has occurred even though you might have no idea where it was. 
+
+35
+00:06:58,339 --> 00:07:03,910
+在龙。一组比特中1的个数是偶数还是奇数被称为奇偶性。
+in the dragon. whether a group of bits has an even or an odd number of ones is known as its parity. 
+
+36
+00:07:04,600 --> 00:07:15,839
+你也可以使用数字，并说奇偶校验位是0或1，这通常是更有帮助的，一旦你开始用这个想法和这个特殊的位，发送者用来控制拙劣的模仿被称为奇偶校验位。
+you could also use numbers and say the parity is zero or one, which is typically more helpful once you start doing math with the idea and this special bit that the sender uses to control the parody is called the parity bit. 
+
+37
+00:07:17,649 --> 00:07:42,740
+实际上我们应该清楚如果接收端看到奇偶校验，并不一定意味着只有一个错误。可能有3个或5个或任何其他奇数的错误，但他们可以确定它不是零。另一方面，如果有两个错误或任何偶数个错误，1的最终计数仍然是偶数，因此接收者不能完全确信偶数一定意味着消息永远是免费的。
+and actually we should be clear if the receiver sees an odd parity, it doesn't necessarily mean there was just one error. there might have been three errors or five or any other odd number, but they can know for sure that it wasn't zero. on the other hand, if there had been two errors or any even number of errors, that final count of ones would still be even so the receiver can't have full confidence that an even count necessarily means the message is ever free. 
+
+38
+00:07:43,069 --> 00:08:05,730
+你可能会抱怨，一个只被两个比特的翻转弄乱的消息是相当弱的，你绝对是对的。但是请记住，没有检测或纠正错误的方法。他们可以给你百分之百的信心你收到的信息是发送者想要的毕竟足够多的随机噪声总是可以仅仅通过纯粹的改变一个有效的信息到另一个有效的信息。
+you might complain that a message which gets messed up by only two bit flips is pretty weak and you would be absolutely right. keep in mind though, there is no method for error detection or correction. they could give you one hundred percent confidence that the message you receive is the one that the sender intended after all enough random noise could always change one valid message into another valid message just by pure. 
+
+39
+00:08:05,959 --> 00:08:15,579
+相反，我们的目标是提出一种方案，在一定的最大错误数前是稳健的，或者可能减少像这样的假阳性的概率。
+instead, the goal is to come up with a scheme that's robust up to a certain maximum number of errors or maybe to reduce the probability of a false positive like this. 
+
+40
+00:08:15,959 --> 00:08:27,519
+奇偶校验本身是相当弱的，但通过将整个信息的变化思想提炼到单个位，它们给我们提供了一个强大的构建模块，用于更复杂的方案。
+parity checks on their own are pretty weak, but by distilling the idea of change across a full message down to a single bit, what they give us is a powerful building block for more sophisticated schemes. 
+
+41
+00:08:27,709 --> 00:08:46,399
+例如，当汉明正在寻找一种方法来确定错误发生在哪里时。不仅仅是它发生了。他的关键见解是，如果你应用一些奇偶校验，而不是完整的信息。但是对于某些精心选择的子集，您可以提出一系列更精确的问题，以确定任何单个比特错误的位置。
+for example, as hamming was searching for a way to identify where an error happened. not just that it happened. his key insight was that if you apply some parity checks not to the full message. but to certain carefully selected subsets, you can ask a more refined series of questions that pin down the location of any single bit error. 
+
+42
+00:08:46,580 --> 00:08:53,740
+整体感觉有点像在玩一个包含20个问题的游戏，问的是或否，将可能性空间减半。
+the overall feeling is a bit like playing a game of twenty questions asking yes or no queries that chop the space of possibilities in half. 
+
+43
+00:08:54,019 --> 00:08:59,799
+例如，我们对这8个位进行奇偶校验，所有奇数的位置。
+for example, let's say we do a parity check just on these eight bits, all of the odd numbered positions. 
+
+44
+00:09:00,009 --> 00:09:08,690
+然后，如果检测到错误，它就会给感知者更多关于错误具体在哪里的信息，也就是它在一个奇怪的位置。
+then if an error is detected, it gives the perceiver a little more information about where specifically the error is, namely that it's in an odd position. 
+
+45
+00:09:08,870 --> 00:09:16,720
+如果在这8位中没有检测到错误，这要么意味着根本没有错误，要么它位于偶数位置。
+if no error is detected among those eight bits, it either means there's no error at all or it sits somewhere in the even positions. 
+
+46
+00:09:16,899 --> 00:09:27,779
+您可能认为将拙劣模仿检查限制到一半会降低其效率，但是当它与其他精心选择的检查一起进行时。与我们的直觉相反，它给了我们更强大的东西。
+you might think that limiting a parody check to half the bits makes it less effective, but when it's done in conjunction with other well chosen checks. it counterintuitively gives us something a lot more powerful. 
+
+47
+00:09:29,399 --> 00:09:36,929
+来建立奇偶校验。请记住，它需要指定一些特殊的位，以控制整个组的模仿。
+to actually set up that parity check. remember, it requires earmarking some special bit that has controlled for the parody of that full group. 
+
+48
+00:09:37,200 --> 00:09:47,360
+这里我们选择1号位置。在这个例子中，这8位的奇偶性是奇数，所以cinder负责切换模仿位，现在它是偶数。
+here let's just choose position number one. so for the example shown the parity of these eight bits is currently odd, so the cinder is responsible for toggling that parody bit and now it's even. 
+
+49
+00:09:47,860 --> 00:09:56,379
+这是四个奇偶校验中的一个进行第二次校验的是网格右半部分的8位，至少我们在这里画的是这样。
+this is only one out of four parity checks that will do the second check is going to be among the eight bits on the right half of the grid, at least as we've drawn it here. 
+
+50
+00:09:56,559 --> 00:09:59,759
+这次我们可能使用位置2作为奇偶校验位。
+this time we might use position number two as a parity bit. 
+
+51
+00:09:59,940 --> 00:10:06,440
+所以这八位已经有一个甚至恶搞和发件人可以感觉良好。让2号保持不变。
+so these eight bits already have an even parody and the sender can feel good. leaving that bit number two unchanged. 
+
+52
+00:10:06,740 --> 00:10:29,100
+然后在另一端，如果接收端检查这个组的奇偶性，他们发现它是奇数，他们就会知道错误就在右边的这八个比特中。否则它意味着要么没有错误要么是左半部分的某个地方有错误或者我猜可能有两个错误，但现在我们假设在整个块中最多有一个错误它会完全崩溃超过。
+then on the other end, if the receiver checks the parity of this group and they find that it's odd, they'll know that the error is somewhere among these eight bits on the right. otherwise it means either there's no error or the error somewhere on the left half or i guess there could have been two errors, but for right now we're going to assume that there's at most one error in the entire block things break down completely for more than. 
+
+53
+00:10:29,279 --> 00:10:43,529
+这里，在我们看下两个检查之前，花点时间想想这两个检查让我们做了什么，当你把它们放在一起考虑的时候，假设你在奇数列和右半列中检测到一个错误，这必然意味着错误在最后一列的某个地方。
+here, before we look at the next two checks, take a moment to think about what these first two allow us to do when you consider them together, let's say you detect an error among the odd columns and among the right half, it necessarily means the error is somewhere in the last column. 
+
+54
+00:10:43,710 --> 00:11:11,210
+如果奇数列没有错误，但右半列有错误。这说明它在倒数第二列。同样地，如果奇数列有错误，但不是在右半列，你知道它是在第二列的某处，然后如果这两个奇偶校验都没有检测到任何东西，这意味着唯一可能出现错误的地方是在最左边的列。但它也可能仅仅意味着根本没有错误。这是一个相当复杂的方式来说明两个奇偶校验。让我们把柱子固定住。
+if there was no error in the odd column, but there was one in the right half. well, that tells you it's in the second to last column. likewise, if there is an error in the odd columns, but not in the right half, you know that it's somewhere in the second column and then if neither of those two parity checks detects anything, it means the only place that an error could be is in that left most column. but it also might simply mean there's no error at all. which is all a rather belabored way to say that two parity check. let us pin down the column. 
+
+55
+00:11:11,389 --> 00:11:42,350
+从这里您可能可以猜到接下来会发生什么。我们做的基本上是相同的事情，但对于行，将会有一个奇偶校验在奇数行上使用位置4作为奇偶校验位。在这个例子中，这个群体已经有了一个滑稽的模仿。第4位会被设为0。最后，在最下面的两行有一个奇偶校验，使用第8位作为模仿位。在这种情况下。看起来发送方需要打开这个位以便给组偶数奇偶校验，就像前两个检查让我们确定列一样。接下来的两个，让你确定这一行。
+from here you can probably guess what follows. we do basically the same thing, but for the rows there's gonna be a parity check on the odd rows using position four as a parity bit. so in this example that group already has an even parody. so bit four would be set to a zero. and finally, there is a parity check on the bottom two rows using position eight as a parody bit. in this case. it looks like the sender needs to turn that bit on in order to give the group even parity just as the first two checks let us pin down the column. these next two, let you pin down the row. 
+
+56
+00:11:42,649 --> 00:11:58,279
+作为一个例子。假设在传输过程中，3号位置出现了错误。它会影响第一个奇偶校验组也会影响第二个奇偶校验组。所以接收者知道在速率这一列某处有一个错误，但它不影响第三组。
+as an example. imagine that during the transmission there's an error at, say position three. well, this affects the first parity group and it also affects the second parity group. so the receiver knows that there's an error somewhere in that rate column, but it doesn't affect the third group. 
+
+57
+00:11:58,779 --> 00:12:00,679
+第四组不受影响。
+and it doesn't affect the fourth group. 
+
+58
+00:12:01,029 --> 00:12:07,960
+一旦接收器精确定位到第一行的错误，也就是第三个位置，这样他们就可以修正错误。
+and that once the receiver pinpoint the error up to the first row, which necessarily means position three so they can fix the error. 
+
+59
+00:12:08,330 --> 00:12:28,950
+你可能会喜欢花点时间说服自己，这四个问题的答案真的会让你确定一个具体的地点，无论他们最后是在哪里。事实上，你可能会注意到这些问题和二进制计数之间的联系。如果你再这样做，我强调一下暂停，在我破坏之前，自己试着把它们联系起来。
+you might enjoy taking a moment to convince yourself that the answers to these four questions really will always let you pin down a specific location no matter where they turn out to be. in fact, the astute among you might even notice a connection between these questions and binary counting. and if you do again, let me emphasize pause, try for yourself to draw the connection before i spoil it. 
+
+60
+00:12:30,519 --> 00:12:44,590
+如果你想知道如果奇偶校验位本身受到影响会发生什么，嗯，你可以尝试一下。花点时间思考一下，如何找到这四个特殊部分中的任何错误，就像用同样的四个问题组找到任何其他错误一样。
+if you're wondering what happens if a parity bit itself gets affected, well, you can just try it. take a moment to think about how any error among these four special bits is going to be tracked down just like any other with the same group of four questions. 
+
+61
+00:12:47,120 --> 00:12:58,820
+这真的不重要，因为在一天结束的时候。我们想要的是保护信息位。纠错的部分只是随行而行，但保护这些部分也是作为购买产品而自然脱离方案的事情。
+it doesn't really matter since at the end of the day. what we want is to protect the message bits. the error correction bits are just riding along, but protecting those bits as well is something that naturally falls out of the scheme as a buy product. 
+
+62
+00:12:59,000 --> 00:13:13,059
+你可能也想知道它是如何缩放的如果我们使用一个256位的块，例如，为了确定一个位置，你只需要8个是或否的问题来二进制搜索到某个特定的位置。
+you might also enjoy anticipating how this scales if we used a block of size two hundred fifty six bits, for example, in order to pin down a location, you need only eight yes or no questions to binary search your way down to some specific spot. 
+
+63
+00:13:15,370 --> 00:13:20,799
+记住，每个问题只需要放弃一点来设置适当的模仿检查。
+and remember, each question requires giving up only a single bit to set the appropriate parody check. 
+
+64
+00:13:22,960 --> 00:13:50,450
+你们中的一些人可能已经看过了。但我们稍后会用一到两分钟的时间来讨论找出这些问题的系统方法。希望这个草图足以让我们欣赏我们在这里开发的效率。除了那八个高亮显示的奇偶校验位以外的所有东西都可以是你想要的任何东西，它可以携带任何你想要的信息或数据。这8位是冗余的，因为它们完全由消息的其余部分决定。但这是一种比简单地复制整个信息更聪明的方式。
+some of you may already see it. but we'll talk later about the systematic way to find what these questions are in just a minute or two. hopefully this sketch is enough to appreciate the efficiency of what we're developing here. everything except for those eight highlighted parity bits can be whatever you want it to be carrying whatever message or data you want. the eight bits are redundant in the sense that they are completely determined by the rest of the message. but it's in a much smarter way than simply copying the message as a whole. 
+
+65
+00:13:53,309 --> 00:13:58,870
+还是为了那么一点点放弃。您将能够识别和修复任何单个比特错误。
+and still for so little given up. you would be able to identify and fix any single bit error. 
+
+66
+00:13:59,309 --> 00:14:17,320
+嗯,差不多好了。所以这里的一个问题是，如果四个奇偶校验都没有检测到错误，这意味着特别选择的8位子集都有模仿，就像发送者想要的那样。那就意味着没有任何误差或者缩小到零点位置。
+well, almost okay. so the one problem here is that if none of the four parity checks detect an error, meaning that the specially selected subsets of eight bits all have even parodies just like the sender intended. then it either means there was no error at all or it narrows us down into position zero. 
+
+67
+00:14:17,500 --> 00:14:32,360
+你看，有四个是或否的问题，我们有16种可能的结果，我们的奇偶校验，首先这感觉完美地确定了16个位置中的一个，但你也需要沟通第17个结果。无错误条件。
+you see with four yes or no questions, we have sixteen possible outcomes for our parity checks and at first that feels perfect for pinpointing one out of sixteen positions in the block, but you also need to communicate a 17th outcome. the no error condition. 
+
+68
+00:14:32,710 --> 00:14:43,909
+这里的解决方法其实很简单。完全忘掉第0点。所以当我们做四个奇偶校验时，我们看到它们都是偶数，这毫不含糊地意味着没有错误。
+the solution here is actually pretty simple. just forget about that zeroth bit entirely. so when we do our four parity checks and we see that they're all even it unambiguously means that there is no error. 
+
+69
+00:14:44,090 --> 00:14:59,279
+这意味着我们不是处理16位的数据块，而是处理15位的数据块其中11位可以自由携带信息其中4位是为了冗余这样，我们现在就有了业内人士所说的15 - 11汉明码。
+what that means is rather than working with a sixteen bit block, we work with a fifteen bit block where eleven of the bits are free to carry a message and four of them are there for redundancy and with that, we now have what people in the business would refer to as a fifteen eleven hamming code. 
+
+70
+00:14:59,580 --> 00:15:08,429
+也就是说，有块大小是很好的。这是一个干净的2的幂我们有一个聪明的方法可以让0为我们做一些额外的工作。
+that said, it is nice to have a block size. that's a clean power of two and there's a clever way that we can keep that zero bit around and get it to do a little extra work for us and. 
+
+71
+00:15:08,610 --> 00:15:53,090
+如果我们使用它作为整个区块的奇偶校验位，它可以让我们检测，即使我们不能纠正两个错误，这是它如何工作后设置四个特殊的错误纠正位。我们把第0个设为1这样整个数据块的奇偶校验就和普通的奇偶校验一样了。现在，如果有一个比特错误，那么整个块的奇偶校验切换为奇数，但我们无论如何会捕捉到它，感谢四个错误纠正检查。然而，如果有两个错误，那么整体奇偶校验将切换回偶数，但接收方仍然会看到至少有一些错误，因为这四个常见的奇偶校验发生了什么。所以如果他们注意到他整体上是奇偶校验，但在其他检查中发生了非零的情况，这就告诉他们至少有两个错误。
+if we use it as a parity bit across the whole block, it lets us actually detect even though we can't correct two bit errors, here's how it works after setting those four special error correcting bits. we set that zeroth one so that the parity of the full block is even just like a normal parity check. now if there's a single bit error, then the parity of the full block toggles to be odd, but we would catch that anyway thanks to the four error correcting checks. however, if there's two errors, then the overall parity is gonna toggle back to being even, but the receiver would still see that there's been at least some error because of what's going on with those four usual parity checks. so if they notice him even parity overall, but something nonzero happening with the other checks, it tells them there were at least two errors. 
+
+72
+00:15:53,269 --> 00:16:01,559
+这不是很聪明吗即使我们不能通过输入一个烦人的零比特来纠正这两个比特的错误，它也能让我们检测到它们。
+isn't that clever even though we can't correct those two bit errors just by putting that one little bothersome zero bit back to work, it lets us detect them. 
+
+73
+00:16:01,950 --> 00:16:05,620
+这是很标准的。它被称为扩展边码。
+this is pretty standard. it's known as an extended hemming code. 
+
+74
+00:16:06,240 --> 00:16:21,669
+从技术上讲，你现在对汉明码的功能有了一个完整的描述，至少对于16位块的例子来说是这样，但我认为你会更满意通过从头到尾做一个完整的例子来检查你的理解并巩固到这一点。
+technically speaking, you now have a full description of what a hamming code does, at least for the example of a sixteen bit block, but i think you'll find it more satisfying to check your understanding and solidify everything up to this point by doing one full example from start to finish your. 
+
+75
+00:16:21,850 --> 00:16:24,620
+不过我会和你一起慢慢来的。你可以检查一下自己。
+i'll step through it with you though. so you can check yourself. 
+
+76
+00:16:24,799 --> 00:16:35,019
+要设置一个消息，无论它是您要在空间上转换的文字消息，还是您想要在一段时间内存储的一些数据，第一步是将其划分为11位块。
+to set up a message whether that's a literal message that you're translating over space or some data that you want to store over time, the first step is to divide it up into eleven bit chunks. 
+
+77
+00:16:35,309 --> 00:16:47,320
+每个块都将被打包成一个防错误的16位块。我们以这个为例来算一下。去做吧，真的去做，暂停一下，试着把这个块拼起来。
+each chunk is going to get packaged into an error resistance sixteen bit block. so let's take this one as an example and actually work it out. go ahead, actually do it, pause and try putting together this block. 
+
+78
+00:16:52,769 --> 00:17:03,559
+好的,你准备好了。记住位置0和2的其他幂都保留用于错误修正的职责。所以你开始把信息位放在所有剩下的位置。
+okay, you're ready. remember position zero along with the other powers of two are reserved for error correction duty. so you start by placing the message bits in all of the remaining spots in. 
+
+79
+00:17:05,380 --> 00:17:12,700
+你需要这个组具有偶数奇偶性，它已经做到了。所以你应该把位置1的恶搞位设为0。
+you need this group to have an even parity, which it already does. so you should have set that parody bit in position one to be a zero. 
+
+80
+00:17:12,880 --> 00:17:18,329
+下一组以一种奇怪的势均力敌开始，所以你应该说这是一种恶搞。
+the next group starts off with an odd parity, so you should have said it's parody bit to be one. 
+
+81
+00:17:19,009 --> 00:17:30,369
+之后的组以一个奇偶校验开始。同样，你应该把它的奇偶校验位设为1最后一组也有一个奇怪的恶搞，意思是我们把第8位的那个位设为1。
+the group after that starts with an odd parity. so again, you should have set its parity bit to one and the final group also has an odd parody, meaning we set that bit in position eight to be a one. 
+
+82
+00:17:31,160 --> 00:17:40,710
+然后作为最后一步，整个块现在有一个偶数奇偶校验，这意味着你可以把那个位数字设为零。整体的滑稽模仿是零。
+and then as the final step, the full block now has an even parity, meaning that you can set that bit number zero. the overarching parody bit to be zero. 
+
+83
+00:17:41,150 --> 00:17:48,559
+所以当这个块被发送出去的时候，四个特殊子集的奇偶性和整个块将都是偶数或零。
+so as this block is sent off the parity of the four special subsets and the block as a whole will all be even or zero. 
+
+84
+00:17:48,740 --> 00:17:52,630
+作为练习的第二部分。让你来扮演接球手的角色。
+as the second part of the exercise. let's have you play the role of the receiver. 
+
+85
+00:17:53,299 --> 00:18:11,190
+当然，这意味着您还不知道这条消息是什么。也许你们中的一些人记住了，但我们假设你们没有我要做的是改变这个块中的0位，1位或2位然后让你们找出我再次这么做的是什么，暂停并试着算出来。
+of course, that would mean you don't already know what this message is. maybe some of you memorized it, but let's assume that you haven't what i'm going to do is change either zero, one or two of the bits in that block and then ask you to figure out what it is that i did so again, pause and try working it out. 
+
+86
+00:18:19,730 --> 00:18:28,339
+好吧，你是接收者。现在检查第一个奇偶校验组，你会发现它是偶数的，所以任何存在的错误都必须在偶数列。
+okay, so you is the receiver. now check the first parity group and you can see that it's even so any error that exists would have to be in an even column. 
+
+87
+00:18:29,519 --> 00:18:37,539
+下一个检查给我们一个奇数，告诉我们至少有一个错误，并将我们缩小到特定的列。
+the next check gives us an odd number telling us both that there's at least one error and narrowing us down into specific column. 
+
+88
+00:18:38,440 --> 00:18:42,170
+第三个检查甚至是进一步降低可能性。
+the third check is even dropping down the possibilities even further. 
+
+89
+00:18:42,529 --> 00:18:50,059
+最后一个奇偶校验是奇数。告诉我们在底部某处有一个错误，现在我们可以看到，这个错误一定是在10号位置。
+and the last parity check is odd. telling us there's an error somewhere in the bottom, which by now we can see must be in a position number ten. 
+
+90
+00:18:51,339 --> 00:19:00,130
+更重要的是，整个街区的模仿是奇怪的，让我们有信心有一次翻转，而不是两次如果是三次或更多，我会更好。
+what's more, the parody of the whole block is odd, giving us confidence that there was one flip and not two if it's three or more, i'll better off. 
+
+91
+00:19:01,069 --> 00:19:14,410
+在修正了那个比特之后，第10个，取出11个没有被用来修正的比特，我们就得到了原始信息的相关片段，如果你倒回去比较的话，这确实就是我们开始的例子。
+after correcting that bit, number ten, pulling out the eleven bits that were not used for correction gives us the relevant segment of the original message, which if you rewind and compare is indeed exactly what we started the example with. 
+
+92
+00:19:15,759 --> 00:19:39,170
+现在你已经知道了如何手工完成所有这些，我将向你展示如何使用一行python代码来执行所有这些逻辑的核心部分。我还没有告诉你们的是这个算法有多优雅，让机器指向错误的医生是多么简单，如何系统地衡量它，以及我们如何将所有这些构建为一个单一操作而不是多个单独的奇偶校验。
+and now that you know how to do all this by hand, i'd like to show you how you can carry out the core part of all of this logic with a single line of python code. you see what i haven't told you yet is just how elegant this algorithm really is, how simple it is to get a machine to point to the physician of an error, how to systematically scale it and how we can frame all of this as one single operation rather than multiple separate parity checks. 
+
+93
+00:19:39,349 --> 00:19:42,069
+要明白我的意思，也来加入我的一部分。
+to see what i mean, come join me in part too. 
+

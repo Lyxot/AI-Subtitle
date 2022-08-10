@@ -230,7 +230,8 @@ def audio_separate(file_path):
 
 def test():
     # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
-    fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
+    # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
+    fileLink = "http://101.132.75.22/汉明码Part1,如何克服噪声.mp3"
     # 执行录音文件识别
     result = json2srt(stt(configs.ALIYUN_ACCESSKEY_ID, configs.ALIYUN_ACCESSKEY_SECRET, configs.ALIYUN_APPKEY, fileLink))
     with open("output.srt", "w", encoding="utf-8") as f:
@@ -241,6 +242,7 @@ if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     # 测试
     # audio_separate(sys.argv[1])
+    # os.system("scp "+sys.argv[1][:sys.argv[1].rfind(".")]+".mp3"+" root@101.132.75.22:/home/wwwroot/default")
     test()
     exit()
     
