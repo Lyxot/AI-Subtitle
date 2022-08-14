@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTranslateProgram", "VideoTranslateProgram\VideoTranslateProgram.csproj", "{80027268-225A-461C-990E-BA246F1AA832}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80027268-225A-461C-990E-BA246F1AA832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80027268-225A-461C-990E-BA246F1AA832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80027268-225A-461C-990E-BA246F1AA832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80027268-225A-461C-990E-BA246F1AA832}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8E9FC98-F9F2-44C4-B715-16DF341AB0C8}
+	EndGlobalSection
+EndGlobal

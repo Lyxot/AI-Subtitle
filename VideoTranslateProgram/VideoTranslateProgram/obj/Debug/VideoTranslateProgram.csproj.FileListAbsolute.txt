@@ -1,0 +1,15 @@
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\bin\Debug\VideoTranslateProgram.exe.config
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\bin\Debug\VideoTranslateProgram.exe
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\bin\Debug\VideoTranslateProgram.pdb
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.csproj.AssemblyReference.cache
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.csproj.SuggestedBindingRedirects.cache
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.Properties.Resources.resources
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.csproj.GenerateResource.cache
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.csproj.CoreCompileInputs.cache
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.exe
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.pdb
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.aboutPage.resources
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.mainWindow.resources
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.VideoPage.resources
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.mainPage.resources
+G:\keti\code\VideoTranslateProgram\VideoTranslateProgram\VideoTranslateProgram\obj\Debug\VideoTranslateProgram.helpPage.resources

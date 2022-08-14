@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80027268-225A-461C-990E-BA246F1AA832}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VideoTranslateProgram</RootNamespace>
+    <AssemblyName>VideoTranslateProgram</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aboutPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aboutPage.Designer.cs">
+      <DependentUpon>aboutPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="helpPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpPage.Designer.cs">
+      <DependentUpon>helpPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utiles.cs" />
+    <Compile Include="mainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainPage.Designer.cs">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mainWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainWnd.Designer.cs">
+      <DependentUpon>mainWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoPage.Designer.cs">
+      <DependentUpon>VideoPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="aboutPage.resx">
+      <DependentUpon>aboutPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="helpPage.resx">
+      <DependentUpon>helpPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainPage.resx">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainWnd.resx">
+      <DependentUpon>mainWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="VideoPage.resx">
+      <DependentUpon>VideoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\home-outline %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\translate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\home-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\home-outline %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\bx-help-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\info-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\menu %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\subject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\close-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\window-min-line.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
