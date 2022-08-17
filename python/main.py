@@ -1,3 +1,4 @@
+# cython:language_level=3
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
@@ -145,8 +146,8 @@ def json2srt(json):
             speech_rate = i[KEY_LIST_SPEECH_RATE]
             text = i[KEY_LIST_TEXT]
             # 处理时间
-            begin_time = str(int(begin_time) // 3600).zfill(2) + ":" + str(int(begin_time) // 60).zfill(2) + ":" + str(int(begin_time) % 60).zfill(2) + "," + str(int((begin_time - int(begin_time))*1000)).zfill(3)
-            end_time = str(int(end_time) // 3600).zfill(2) + ":" + str(int(end_time) // 60).zfill(2) + ":" + str(int(end_time) % 60).zfill(2) + "," + str(int((end_time - int(end_time))*1000)).zfill(3)
+            begin_time = str(int(begin_time) // 3600).zfill(2) + ":" + str(int(begin_time) % 3600 // 60).zfill(2) + ":" + str(int(begin_time) % 60).zfill(2) + "," + str(int((begin_time - int(begin_time))*1000)).zfill(3)
+            end_time = str(int(end_time) // 3600).zfill(2) + ":" + str(int(end_time) % 3600 // 60).zfill(2) + ":" + str(int(end_time) % 60).zfill(2) + "," + str(int((end_time - int(end_time))*1000)).zfill(3)
             # 翻译
             translate_result = translate(text)
             if str(translate_result["errorCode"]) != "0":
@@ -231,20 +232,24 @@ def audio_separate(file_path):
 def test():
     # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/A%20Glimpse%20into%20the%20Future.aac"
     # fileLink = "https://github.com/A-JiuA/AI-Subtitle/raw/main/samples/%E7%9B%B4%E8%A7%82%E8%A7%86%E8%A7%89(%E4%BC%AA)%E8%AF%81%E6%98%8E%E4%B8%89%E4%BE%8B.aac"
-    fileLink = "http://101.132.75.22/汉明码Part1,如何克服噪声.mp3"
+    fileLink = "http://101.132.75.22/小王子.mp3"
     # 执行录音文件识别
+    print(stt(configs.ALIYUN_ACCESSKEY_ID, configs.ALIYUN_ACCESSKEY_SECRET, configs.ALIYUN_APPKEY, fileLink))
     result = json2srt(stt(configs.ALIYUN_ACCESSKEY_ID, configs.ALIYUN_ACCESSKEY_SECRET, configs.ALIYUN_APPKEY, fileLink))
     with open("output.srt", "w", encoding="utf-8") as f:
         f.write(result)
 
-if __name__ == "__main__":
+def main():
     # 切换工作目录
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     # 测试
     # audio_separate(sys.argv[1])
     # os.system("scp "+sys.argv[1][:sys.argv[1].rfind(".")]+".mp3"+" root@101.132.75.22:/home/wwwroot/default")
-    test()
+    print(translate("hello"))
     exit()
+
+if __name__ == "__main__":
+    main()
     
     # 参数判断
     if len(sys.argv) != 2:

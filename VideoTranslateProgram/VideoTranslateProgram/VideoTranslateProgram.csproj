@@ -32,7 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VideoTranslateProgram.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aliyun-net-sdk-Core">
+      <HintPath>.\aliyun-net-sdk-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>.\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -53,6 +62,8 @@
     <Compile Include="aboutPage.Designer.cs">
       <DependentUpon>aboutPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AliyunKey.cs" />
+    <Compile Include="VideoTrans.cs" />
     <Compile Include="helpPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\window-min-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
