@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace VideoTranslateProgram
 {
@@ -19,6 +20,8 @@ namespace VideoTranslateProgram
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainWindow());
         }
+        
+    
 
         
     }

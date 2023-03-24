@@ -10,11 +10,12 @@ using System.Text;
 using System.Net;
 using Newtonsoft.Json;
 using static System.Net.Mime.MediaTypeNames;
-
+using VideoTranslateProgram.winforms;
 namespace VideoTranslateProgram
 {
     class VideoTrans
     {
+        public static StateWND stateWND;
         // 地域ID，固定值。
         public const string REGIONID = "cn-shanghai";
         public const string PRODUCT = "nls-filetrans";
@@ -42,6 +43,8 @@ namespace VideoTranslateProgram
         public const string KEY_LIST_TIME_END = "EndTime";
         public const string KEY_LIST_TEXT = "Text";
         public const string KEY_LIST_SPEECH_RATE = "SpeechRate";
+
+       
         static JObject stt(string accessKeyId, string accessKeySecret, string appKey, string fileLink) {
             JObject FailObj = new JObject();
             FailObj[KEY_STATUS_TEXT] = "";
@@ -125,6 +128,7 @@ namespace VideoTranslateProgram
                         if (statusText.Equals(STATUS_RUNNING)) {
                             // 继续轮询
                             System.Console.WriteLine("录音文件识别请求正在识别中");
+                            stateWND.updateState(StateWND.state.recognition);
                         }
                     }
                         
@@ -250,6 +254,7 @@ namespace VideoTranslateProgram
                 if (JObject.Parse(responseText)["errorCode"].ToString().Equals("0"))
                 {
                     System.Console.WriteLine("翻译成功: " + text);
+                    stateWND.updateState(StateWND.state.translate);
                 }
                 else
                 {
@@ -265,8 +270,9 @@ namespace VideoTranslateProgram
                 return FailObj;
             }
         }
-        public static string VideoTranslate(string FileLink) {
-            JObject SttResult = stt(AliyunKey.ALIYUN_ACCESSKEY_ID, AliyunKey.ALIYUN_ACCESSKEY_SECRET, AliyunKey.ALIYUN_APPKEY, FileLink);
+        public static string VideoTranslate(string FileLink,StateWND sw) {
+            stateWND = sw;
+            JObject SttResult = stt(Config.ALIYUN_ACCESSKEY_ID, Config.ALIYUN_ACCESSKEY_SECRET, Config.ALIYUN_APPKEY, FileLink);
             if (SttResult[KEY_STATUS_TEXT].ToString().Equals(STATUS_SUCCESS)) {
                 string SrtResult = json2srt(SttResult);
                 return SrtResult;

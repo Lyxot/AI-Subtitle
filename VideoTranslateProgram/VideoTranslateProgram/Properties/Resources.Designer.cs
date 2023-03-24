@@ -63,6 +63,16 @@ namespace VideoTranslateProgram.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _324857 {
+            get {
+                object obj = ResourceManager.GetObject("324857", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap bx_help_circle {
             get {
                 object obj = ResourceManager.GetObject("bx-help-circle", resourceCulture);

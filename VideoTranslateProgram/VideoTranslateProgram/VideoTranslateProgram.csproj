@@ -33,18 +33,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>VideoTranslateProgram.Program</StartupObject>
+    <ApplicationIcon>LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="aliyun-net-sdk-Core">
+    <Reference Include="aliyun-net-sdk-Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\aliyun-net-sdk-Core.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,51 +59,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aboutPage.cs">
+    <Compile Include="Config.cs" />
+    <Compile Include="UpLoad.cs" />
+    <Compile Include="VideoTrans.cs" />
+    <Compile Include="winforms\aboutPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aboutPage.Designer.cs">
+    <Compile Include="winforms\aboutPage.Designer.cs">
       <DependentUpon>aboutPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="AliyunKey.cs" />
-    <Compile Include="VideoTrans.cs" />
-    <Compile Include="helpPage.cs">
+    <Compile Include="winforms\helpPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="helpPage.Designer.cs">
+    <Compile Include="winforms\helpPage.Designer.cs">
       <DependentUpon>helpPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles.cs" />
-    <Compile Include="mainPage.cs">
+    <Compile Include="winforms\mainPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainPage.Designer.cs">
+    <Compile Include="winforms\mainPage.Designer.cs">
       <DependentUpon>mainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="mainWnd.cs">
+    <Compile Include="winforms\mainWnd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainWnd.Designer.cs">
+    <Compile Include="winforms\mainWnd.Designer.cs">
       <DependentUpon>mainWnd.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VideoPage.cs">
+    <Compile Include="winforms\StateWND.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VideoPage.Designer.cs">
+    <Compile Include="winforms\StateWND.Designer.cs">
+      <DependentUpon>StateWND.cs</DependentUpon>
+    </Compile>
+    <Compile Include="winforms\VideoPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="winforms\VideoPage.Designer.cs">
       <DependentUpon>VideoPage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="aboutPage.resx">
+    <EmbeddedResource Include="winforms\aboutPage.resx">
       <DependentUpon>aboutPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="helpPage.resx">
+    <EmbeddedResource Include="winforms\helpPage.resx">
       <DependentUpon>helpPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainPage.resx">
+    <EmbeddedResource Include="winforms\mainPage.resx">
       <DependentUpon>mainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainWnd.resx">
+    <EmbeddedResource Include="winforms\mainWnd.resx">
       <DependentUpon>mainWnd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,9 +123,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="VideoPage.resx">
+    <EmbeddedResource Include="winforms\StateWND.resx">
+      <DependentUpon>StateWND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="winforms\VideoPage.resx">
       <DependentUpon>VideoPage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\VideoTranslateProgram.exe.config" />
+    <None Include="bin\run.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,7 +181,16 @@
     <None Include="resources\window-min-line.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Content Include="aliyun-net-sdk-Core.dll" />
+    <Content Include="bin\Debug\VideoTranslateProgram.exe" />
+    <Content Include="bin\Debug\VideoTranslateProgram.pdb" />
+    <Content Include="bin\ffmpeg.exe" />
+    <Content Include="LOGO.ico" />
+    <Content Include="Newtonsoft.Json.dll" />
+    <None Include="resources\324857.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
